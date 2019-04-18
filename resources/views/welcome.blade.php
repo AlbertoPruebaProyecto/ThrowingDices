@@ -1,45 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('baseUniquePage')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
+Inicio
+@stop
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+@section('container')
+<div class="simple-page-form animated flipInY">
+    <center>
+        <h4 class="form-title m-b-xl text-center">Bienvenido a Throwing Dices</h4>
+        <p>Una plataforma para poder jugar con tus amigos a un buen rol de mesa sin necesidad de estar presentes en la misma habitación.</p>
+        <div>
+            <br>
+            <a href="/login">
+                <button type="button" class="btn btn-inverse">Acceso</button>
+            </a>
+            <br><br>
+            <a href="/register">
+                <button type="button" class="btn btn-inverse">Registro</button>
+            </a>
         </div>
-    </body>
-</html>
+    </center>
+</div>
+@stop

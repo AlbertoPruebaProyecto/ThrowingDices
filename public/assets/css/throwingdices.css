@@ -1,0 +1,23 @@
+.simple-page{
+	background: url(../../assets/images/dices_rock.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.simple-page-logo {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
+.icon {
+	width: 60px;
+	height: 60px;
+	margin-bottom: 16px;
+	border: 0px solid #ccc;
+	text-align: center;
+	line-height: 42px;
+	display: inline-block;
+}
