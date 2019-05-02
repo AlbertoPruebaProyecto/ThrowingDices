@@ -7,13 +7,14 @@ Login
 @section('container')
 <div class="simple-page-form animated flipInY" id="login-form">
 	<h4 class="form-title m-b-xl text-center">Inicia Sesión</h4>
-	<form action="#">
+	<form action="/auth/login" method="POST">
+		{!! csrf_field() !!}
 		<div class="form-group">
-			<input id="sign-in-email" type="email" class="form-control" placeholder="Email">
+			<input id="sign-in-email" name="email" type="email" class="form-control" placeholder="Email">
 		</div>
 
 		<div class="form-group">
-			<input id="sign-in-password" type="password" class="form-control" placeholder="Password">
+			<input id="sign-in-password" name="password" type="password" class="form-control" placeholder="Password">
 		</div>
 
 		<div class="form-group m-b-xl">
