@@ -7,6 +7,17 @@ Login
 @section('container')
 <div class="simple-page-form animated flipInY" id="login-form">
 	<h4 class="form-title m-b-xl text-center">Inicia Sesión</h4>
+
+	@if (count($errors) > 0)
+	<div class="alert alert-danger margin-b-30">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
+
 	<form action="/auth/login" method="POST">
 		{!! csrf_field() !!}
 		<div class="form-group">

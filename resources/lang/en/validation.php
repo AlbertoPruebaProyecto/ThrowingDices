@@ -108,6 +108,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'numPlayers'    =>  'number of players'
+    ],
 
 ];

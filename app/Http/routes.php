@@ -14,8 +14,15 @@ use \App\User;
 use \App\Party;
 
 Route::get('/', function () {
-	return Auth::check()? 'estás logueado':  view('welcome');
+	return Auth::check()? view('index'):  view('welcome');
 });
+
+Route::get('lang/{lang}', function($lang){
+	session(['lang' => $lang]);
+	return \Redirect::back();
+})->where([
+	'lang' => 'en|es'
+]);
 
 Route::get('login', function() {
 	return Auth::check()? redirect('/'): view('auth.login');
@@ -32,11 +39,18 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function (){
-	Route::get('/auth/logout', 'Auth\AuthController@getLogout');
-	Route::get('/prueba_registro', function(){
+	Route::get('auth/logout', 'Auth\AuthController@getLogout');
+	Route::get('logout', function(){
 		Auth::logout();
-		return 'has cerrado sesión';
+		return redirect('/');
 	});
+
+	Route::get('parties', function(){ return view('parties.parties'); });
+	Route::get('join-party', function(){ return view('parties.join-party'); });
+	Route::get('new-party', function(){ return view('parties.new-party'); });
+
+
+	Route::post('form-new-party', 'PartyController@create');
 });
 
 Route::get('/prueba', function(){

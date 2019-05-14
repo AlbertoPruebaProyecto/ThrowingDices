@@ -43,6 +43,7 @@ return [
     'photo_max_size' => '5072',
 
     'url_image_user' => 'uploads/image_user',
+    'url_image_party' => 'uploads/image_party',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +82,8 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
+    'languages' => array('en', 'es'),
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +161,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+
 
     ],
 

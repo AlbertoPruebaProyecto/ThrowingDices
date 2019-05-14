@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,7 +12,7 @@ return [
     |
     */
 
-    'failed'        =>  'These credentials do not match our records.',
-    'throttle'      =>  'Too many login attempts. Please try again in :seconds seconds.',
-    'user_create'   =>  'The user has been created correctly',
+    'failed'        => 'Estas credenciales no coinciden con nuestros registros.',
+    'throttle'      => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
+    'user_create'   =>  'El usuario ha sido creado correctamente',
 ];

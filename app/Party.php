@@ -10,7 +10,7 @@ class Party extends Model
 	public $timestamps = true;
 
 	protected $fillable = [
-		'name', 'num_players', 'state', 'master_id'
+		'name', 'description', 'num_players', 'state', 'master_id'
 	];
 
 	public function master(){
