@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('join-party', function(){ return view('parties.join-party'); });
 	Route::get('new-party', function(){ return view('parties.new-party'); });
 
+	Route::get('races/{name}', function($name){ return view('races.race')->with('race', $name);	});
+	Route::get('classes/{name}', function($name){ return view('classes.class')->with('className', $name); });
 
 	Route::post('form-new-party', 'PartyController@create');
 });

@@ -1,3 +1,8 @@
+<?php
+Use App\ClassPJ;
+Use App\Race;
+?>
+
 @extends('base')
 
 @section('body')
@@ -10,7 +15,7 @@
 			<div class="animated">
 				<a href="/" id="app-brand" class="app-brand">
 					<center>
-						<img class="icon-layout" src="assets/images/d20.png">
+						<img class="icon-layout" src="/assets/images/d20.png">
 						<span id="brand-name" class="brand-icon foldable">Throwing Dices</span>
 					</center>
 				</a>
@@ -22,7 +27,7 @@
 				<div class="media-left">
 					<div class="avatar avatar-md avatar-circle">
 						<a href="javascript:void(0)">
-							<img class="img-responsive" src="{{ Config::get('app.url_image_user').'/'.Auth::user()->image }}" alt="avatar"/>
+							<img class="img-responsive" src="/{{ Config::get('app.url_image_user').'/'.Auth::user()->image }}" alt="avatar"/>
 						</a>
 					</div><!-- .avatar -->
 				</div>
@@ -54,6 +59,30 @@
 							<li><a href="/parties"> @lang('menu.myParties') </a></li>
 							<li><a href="/join-party"> @lang('menu.joinParty') </a></li>
 							<li><a href="/new-party"> @lang('menu.newParty') </a></li>
+						</ul>
+					</li><!-- .menu-item -->
+					<li class="menu-item has-submenu">
+						<a href="javascript:void(0)" class="menu-link submenu-toggle">
+							<span class="menu-icon"><i class="zmdi zmdi-male-female zmdi-hc-lg"></i></span>
+							<span class="menu-text foldable"> @lang('menu.race') </span>
+							<span class="menu-caret foldable"><i class="zmdi zmdi-hc-sm zmdi-chevron-right"></i></span>
+						</a>
+						<ul class="submenu">
+							@foreach (Race::get() as $element)
+							<li><a href="/races/{{ $element->name }}"> @lang('menu.'.$element->name) </a></li>
+							@endforeach
+						</ul>
+					</li><!-- .menu-item -->
+					<li class="menu-item has-submenu">
+						<a href="javascript:void(0)" class="menu-link submenu-toggle">
+							<span class="menu-icon"><i class="zmdi zmdi-book-image zmdi-hc-lg"></i></span>
+							<span class="menu-text foldable"> @lang('menu.classes') </span>
+							<span class="menu-caret foldable"><i class="zmdi zmdi-hc-sm zmdi-chevron-right"></i></span>
+						</a>
+						<ul class="submenu">
+							@foreach (ClassPJ::get() as $element)
+							<li><a href="/classes/{{ $element->name }}"> @lang('menu.'.$element->name) </a></li>
+							@endforeach
 						</ul>
 					</li><!-- .menu-item -->
 				</ul>

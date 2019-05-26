@@ -44,6 +44,8 @@ return [
 
     'url_image_user' => 'uploads/image_user',
     'url_image_party' => 'uploads/image_party',
+    'url_image_race' => '/assets/images/image_races',
+    'url_image_class' => '/assets/images/image_classes',
 
     /*
     |--------------------------------------------------------------------------

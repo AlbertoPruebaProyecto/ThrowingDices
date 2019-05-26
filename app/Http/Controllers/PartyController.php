@@ -28,9 +28,10 @@ class PartyController extends Controller
 		$newParty = Party::create([
 			'name'	=>	$request->input('name'),
 			'num_players'	=>	$request->input('numPlayers'),
-			'state'			=>	'onHold',
+			'state'			=>	'onPrepare',
 			'master_id'		=>	Auth::id(),
 			'description'	=>	$request->input('description'),
+			'image'			=>	$nameImage,
 		]);
 		$newParty->save();
 

@@ -8,7 +8,7 @@
 	<div class="simple-page-wrap">
 		<div class="simple-page-logo animated swing">
 			<a href="/">
-				<img class="icon" src="assets/images/d20.png">
+				<img class="icon" src="/assets/images/d20.png">
 				<span>Throwing Dices</span>
 			</a>
 		</div><!-- logo -->
