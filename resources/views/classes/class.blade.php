@@ -95,4 +95,22 @@ $classSelected = Classpj::where('name', $className)->first();
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-sm-12">
+		<div class="widget no-glutter p-lg">
+			<h3 class="widget-title fz-lg m-b-lg"><center> @lang('classes.title-special-aptitude') </center></h3>
+		</div>
+	</div>
+
+	@foreach ($classSelected->SpecialAptitudes as $element)
+	<div class="col-md-4 col-sm-6">
+		<div class="widget no-glutter p-lg">
+			<h4 class="widget-title"> {{ $element->name }} </h4>
+			<span style="white-space: pre-line;">{{ $element->description }}</span>
+		</div>
+	</div>
+	@endforeach
+
+</div>
+
 @stop

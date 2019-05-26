@@ -19,5 +19,6 @@ return[
 	'title-table-special'	=>	'Especial',
 	'title-levelup'			=>	'Tabla de subida de nivel',
 	'title-skills'			=>	'Habilidades de clase',
+	'title-special-aptitude'=>	'Aptitudes Especiales',
 ];
 ?>

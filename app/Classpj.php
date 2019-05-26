@@ -16,4 +16,8 @@ class Classpj extends Model
 	public function SkillLevelUp(){
 		return $this->hasMany('App\LevelUp', 'class_id');
 	}
+
+	public function SpecialAptitudes(){
+		return $this->hasMany('App\SpecialAptitude', 'class_id');
+	}
 }
