@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
     	//$this->call(LevelTableSeeder::class);
         //$this->call(RaceTableSeeder::class);
         //$this->call(BarbarianSeeder::class);
+        //$this->call(BardSeeder::class);
+        //$this->call(SpellSeeder::class);
     }
 }

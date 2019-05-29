@@ -7,6 +7,12 @@ return[
 	'alignment-barbarian'	=>	'Cualquiera que no sea legal.',
 	'dice-barbarian'		=>	'd12',
 
+	//Bard
+	'name-bard'				=>	'Bardo',
+
+	//Paladin
+	'name-paladin'			=>	'Paladín',
+
 	//General
 	'title-rol'				=>	'Rol',
 	'title-alignment'		=>	'Alineamiento',

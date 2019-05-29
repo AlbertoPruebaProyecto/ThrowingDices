@@ -85,6 +85,12 @@ Use App\Race;
 							@endforeach
 						</ul>
 					</li><!-- .menu-item -->
+					<li class="menu-item">
+						<a href="/spells" class="menu-link">
+							<span class="menu-icon"><i class="fa fa-book zmdi-hc-lg"></i></span>
+							<span class="menu-text foldable"> @lang('menu.spells') </span>
+						</a>
+					</li><!-- .menu-item -->
 				</ul>
 				<hr>
 				<footer id="aside-footer">

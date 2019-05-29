@@ -19,6 +19,8 @@ return [
 	'classes'	=>	'Clases',
 	'barbarian'	=>	'Bárbaro',
 
+	'spells'	=>	'Hechizos',
+
 	'lang'		=> 	'Idioma',
 	'es'		=> 	'Español',
 	'en'		=>	'Inglés',

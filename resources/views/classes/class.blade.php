@@ -104,8 +104,9 @@ $classSelected = Classpj::where('name', $className)->first();
 
 	@foreach ($classSelected->SpecialAptitudes as $element)
 	<div class="col-md-4 col-sm-6">
-		<div class="widget no-glutter p-lg">
-			<h4 class="widget-title"> {{ $element->name }} </h4>
+		<div class="widget no-glutter p-lg scroll-card">
+			<h3 class="widget-title text-primary"> {{ $element->name }} </h3>
+			<hr>
 			<span style="white-space: pre-line;">{{ $element->description }}</span>
 		</div>
 	</div>
