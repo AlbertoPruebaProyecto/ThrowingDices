@@ -60,3 +60,12 @@ div.scroll-card{
 	height: 250px;
 	overflow-y: scroll;
 }
+
+div.text-inline{
+	margin-bottom: 10px;
+}
+div.text-inline h4,
+div.text-inline p{
+	display: inline;
+	vertical-align: top;
+}

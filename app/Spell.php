@@ -10,6 +10,6 @@ class Spell extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'name', 'school', 'cast_time', 'components', 'range', 'length', 'salvation_throw', 'spell_resistance', 'description'
+		'name', 'school', 'description'
 	];
 }

@@ -18,6 +18,8 @@ return [
 
 	'classes'	=>	'Clases',
 	'barbarian'	=>	'Bárbaro',
+	'bard'		=>	'Bardo',
+	'paladin'	=>	'Paladín',
 
 	'spells'	=>	'Hechizos',
 

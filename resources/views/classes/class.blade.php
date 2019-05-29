@@ -36,7 +36,7 @@ $classSelected = Classpj::where('name', $className)->first();
 			</div>
 			<div class="widget no-glutter p-lg">
 				<h4 class="widget-title"> @lang('classes.title-dice') </h4>
-				<p class="m-b-lg"> @lang('classes.dice-'.$classSelected->name) </p>
+				<p class="m-b-lg"> {{ $classSelected->hit_dice }} </p>
 			</div>
 		</div>
 	</div>

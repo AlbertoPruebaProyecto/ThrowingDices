@@ -6,5 +6,6 @@ return [
 	'level3'	=>	'Nivel 3',
 	'level4'	=>	'Nivel 4',
 	'level5'	=>	'Nivel 5',
+	'level6'	=>	'Nivel 6',
 ];
 ?>}
