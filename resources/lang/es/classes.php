@@ -14,6 +14,9 @@ return[
 
 	//Paladin
 	'name-paladin'			=>	'Paladín',
+	'desc-paladin'			=>	'A través de unos pocos pero selectos individuos brilla el poder de lo divino. Se les llama paladines, y estas almas nobles dedican su espada y su vida a la lucha contra el mal. Caballeros, cruzados, y portadores de la ley, los paladines buscan no tan sólo impartir la justicia divina, sino personificar las enseñanzas de los dioses virtuosos a los que sirven. Persiguiendo sus elevados ideales, se adhieren a leyes rígidas de moralidad y disciplina, y como recompensa a su rectitud, estos campeones sagrados son bendecidos con dádivas que les ayudan en sus misiones: poder para expulsar el mal, curar a los inocentes, e inspirar a los fieles. Aunque sus convicciones podrían hacerles entrar en conf licto con los propios individuos a los que pretenden salvar, los paladines soportan desafíos infinitos de fe y oscuras tentaciones, arriesgando sus vidas para hacer lo que es justo, y luchando para traer un futuro más brillante.',
+	'rol-paladin'			=>	'Los paladines sirven como faro para sus aliados en el caos de la batalla. Como oponentes mortíferos del mal, pueden también potenciar a individuos buenos para que les ayuden en sus cruzadas. Su magia y sus habilidades marciales también les adecúan para defender a los demás, y bendecir a los caídos con la fuerza necesaria para seguir luchando.',
+	'alignment-paladin'		=>	'legal bueno',
 
 	//General
 	'title-rol'				=>	'Rol',
