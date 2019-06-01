@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BardSeeder::class);
         $this->call(PaladinSeeder::class);
         $this->call(SpellSeeder::class);
+        $this->call(MoneySeeder::class);
+        $this->call(WeaponSeeder::class);
     }
 }

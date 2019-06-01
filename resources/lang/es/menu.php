@@ -23,6 +23,10 @@ return [
 
 	'spells'	=>	'Hechizos',
 
+	'objects'	=>	'Objetos',
+	'weapon'	=>	'Armas',
+	'armor'		=>	'Armaduras',
+
 	'lang'		=> 	'Idioma',
 	'es'		=> 	'Español',
 	'en'		=>	'Inglés',

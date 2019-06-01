@@ -91,13 +91,24 @@ Use App\Race;
 							<span class="menu-text foldable"> @lang('menu.spells') </span>
 						</a>
 					</li><!-- .menu-item -->
+					<li class="menu-item has-submenu">
+						<a href="javascript:void(0)" class="menu-link submenu-toggle">
+							<span class="menu-icon"><i class="fa fa-archive zmdi-hc-lg"></i></span>
+							<span class="menu-text foldable"> @lang('menu.objects') </span>
+							<span class="menu-caret foldable"><i class="zmdi zmdi-hc-sm zmdi-chevron-right"></i></span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/objects/weapon"> @lang('menu.weapon') </a></li>
+							<li><a href="/objects/armor"> @lang('menu.armor') </a></li>
+						</ul>
+					</li><!-- .menu-item -->
 				</ul>
 				<hr>
 				<footer id="aside-footer">
 					<ul class="aside-menu aside-left-menu">
 						<li class="menu-item has-submenu">
 							<a href="javascript:void(0)" class="menu-link submenu-toggle">
-								<span class="menu-icon"><i class="zmdi zmdi-settings zmdi-hc-lg"></i></span>
+								<span class="menu-icon"><i class="fa fa-language zmdi-hc-lg"></i></span>
 								<span class="menu-text foldable"> @lang('menu.lang') </span>
 								<span class="menu-caret foldable"><i class="zmdi zmdi-hc-sm zmdi-chevron-right"></i></span>
 							</a>

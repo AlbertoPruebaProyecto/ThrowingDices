@@ -12,4 +12,8 @@ class Money extends Model
 	protected $fillable = [
 		'gold', 'silver', 'copper'
 	];
+
+	public function object(){
+		return $this->hasMany('App\Object');
+	}
 }
