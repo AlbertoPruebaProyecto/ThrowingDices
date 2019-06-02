@@ -18,7 +18,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	0.45,
-    		'type'		=>	'weapon;Ataques_sin_armas',
+    		'type'		=>	'weapon;no-weapon',
     		'money_id'  =>  DB::table('money')->where('gold', '2')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
 
@@ -29,7 +29,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	3,
     		'weight'	=>	0.45,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '2')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -38,7 +38,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	0.45,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '5')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -47,7 +47,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '6')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -56,7 +56,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '5')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -65,7 +65,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '50')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -74,7 +74,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '1')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -83,7 +83,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	6,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '24')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -92,7 +92,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	2.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '35')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -101,7 +101,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	3.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '50')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -110,7 +110,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	0,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '10')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -119,7 +119,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	3,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -128,7 +128,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '6')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -137,7 +137,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	6,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '1')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -146,7 +146,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×4',
     		'range'		=>	0,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_ligeras',
+    		'type'		=>	'weapon;body_to_body-light',
     		'money_id'  =>  DB::table('money')->where('gold', '4')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
 
@@ -157,7 +157,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	6,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '1')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -166,7 +166,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	3.60,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '12')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -175,7 +175,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	2.70,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -184,7 +184,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'18–20/×2',
     		'range'		=>	0,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '15')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -193,7 +193,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	2.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '38')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -202,7 +202,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	3.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '50')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -211,7 +211,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	0,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '15')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -220,7 +220,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'18–20/×2',
     		'range'		=>	0,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '20')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -229,7 +229,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'x3',
     		'range'		=>	0,
     		'weight'	=>	2.70,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '10')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -238,7 +238,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'x2',
     		'range'		=>	0,
     		'weight'	=>	2.25,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -247,7 +247,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'x3',
     		'range'		=>	0,
     		'weight'	=>	2.24,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '12')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -256,7 +256,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'x4',
     		'range'		=>	0,
     		'weight'	=>	2.70,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -265,7 +265,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'x2',
     		'range'		=>	3,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_una_mano',
+    		'type'		=>	'weapon;body_to_body-1_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '15')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
 
@@ -276,7 +276,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	6,
     		'weight'	=>	2.70,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '2')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -285,7 +285,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	4.05,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '5')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -294,7 +294,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '2')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -303,7 +303,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	5.40,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '10')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -312,7 +312,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'18–20/×2',
     		'range'		=>	0,
     		'weight'	=>	3.60,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '75')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -321,7 +321,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	5.40,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '9')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -330,7 +330,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	0,
     		'weight'	=>	3.60,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '5')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -339,7 +339,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	5.40,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '20')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -348,7 +348,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×4',
     		'range'		=>	0,
     		'weight'	=>	4.50,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '18')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -357,7 +357,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	4.50,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -366,7 +366,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	4.50,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '8')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -375,7 +375,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	0,
     		'weight'	=>	3.60,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '50')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -384,7 +384,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	0,
     		'weight'	=>	4.50,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '15')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -393,7 +393,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	0,
     		'weight'	=>	5.40,
-    		'type'		=>	'weapon;Armas_cuerpo_a_cuerpo_a_dos_manos',
+    		'type'		=>	'weapon;body_to_body-2_hand',
     		'money_id'  =>  DB::table('money')->where('gold', '10')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
 
@@ -404,7 +404,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	36,
     		'weight'	=>	3.60,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '50')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -413,7 +413,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'19–20/×2',
     		'range'		=>	24,
     		'weight'	=>	1.80,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '35')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -422,7 +422,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×2',
     		'range'		=>	6,
     		'weight'	=>	0.45,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '2')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -431,7 +431,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	18,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '30')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -440,7 +440,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	21,
     		'weight'	=>	0.90,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '75')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -449,7 +449,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	30,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '75')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     	DB::table('equipments')->insert([
@@ -458,7 +458,7 @@ class WeaponSeeder extends Seeder
     		'critical'	=>	'×3',
     		'range'		=>	33,
     		'weight'	=>	1.35,
-    		'type'		=>	'weapon;Armas_a_distancia',
+    		'type'		=>	'weapon;weapon-range',
     		'money_id'  =>  DB::table('money')->where('gold', '100')->where('silver', '0')->where('copper', '0')->value('id'),
     	]);
     }

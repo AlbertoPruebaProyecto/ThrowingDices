@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SpellSeeder::class);
         $this->call(MoneySeeder::class);
         $this->call(WeaponSeeder::class);
+        $this->call(ArmorSeeder::class);
     }
 }
