@@ -13,7 +13,7 @@ class LevelUp extends Model
 		'level', 'base_atack', 'strenght', 'reflection', 'will', 'special', 'class_id'
 	];
 
-	public function Class(){
+	public function classpj(){
 		return $this->belongsTo('App\Classpj');
 	}
 }

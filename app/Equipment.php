@@ -17,7 +17,15 @@ class Equipment extends Model
 		return $this->belongsTo('App\Money');
 	}
 
-	public function getTypeEquipment(){
+	public function characters(){
+		return $this->belongsToMany('App\Character', 'characters_equipments');
+	}
+
+	/**
+	 * Use function explode on attribute 'type'
+	 * @return string whith the subtype of type
+	 */
+	public function getSubType(){
 		return explode(';', $this->type)[1];
 	}
 }

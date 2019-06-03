@@ -12,4 +12,8 @@ class Spell extends Model
 	protected $fillable = [
 		'name', 'school', 'description'
 	];
+
+	public function characters(){
+		return $this->belongsToMany('App\Character', 'characters_spells');
+	}
 }

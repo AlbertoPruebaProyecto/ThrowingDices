@@ -13,7 +13,11 @@ class SpecialAptitude extends Model
 		'name', 'description', 'class_id'
 	];
 
-	public function Class(){
+	public function classpj(){
 		return $this->belongsTo('App\Classpj');
+	}
+
+	public function characters(){
+		return $this->belongsToMany('App\Character', 'characters_special_aptitudes');
 	}
 }

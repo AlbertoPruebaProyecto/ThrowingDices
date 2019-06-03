@@ -38,4 +38,16 @@ class Character extends Model
 	public function abilities(){
 		return $this->hasMany('App\Ability');
 	}
+
+	public function spells(){
+		return $this->belongsToMany('App\Spell', 'characters_spells');
+	}
+
+	public function specialAptitudes(){
+		return $this->belongsToMany('App\SpecialAptitude', 'characters_special_aptitudes');
+	}
+
+	public function equipments(){
+		return $this->belongsToMany('App\Equipment', 'characters_equipments');
+	}
 }
