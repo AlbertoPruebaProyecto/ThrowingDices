@@ -17,15 +17,7 @@ class Equipment extends Model
 		return $this->belongsTo('App\Money');
 	}
 
-	public function isArmor(){
-		return $this->is_armor == 1;
-	}
-
-	public function isWeapon(){
-		return $this->is_weapon == 1;
-	}
-
-	public function isOther(){
-		return $this->is_other == 1;
+	public function getTypeEquipment(){
+		return explode(';', $this->type)[1];
 	}
 }

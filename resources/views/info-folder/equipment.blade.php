@@ -100,7 +100,7 @@ use App\Equipment;
 				</tr>
 
 				@foreach (Equipment::where('type', 'LIKE', $filter.'%')->get() as $element)
-				<tr class="equipment {{ explode(";", $element->type)[1] }}">
+				<tr class="equipment {{ $element->getTypeEquipment() }}">
 					<td>{{ $element->name }}</td>
 					<td><center>
 						<img class="icon-money" src="/assets/images/gold.png">{{ $element->money->gold }}&nbsp;&nbsp;

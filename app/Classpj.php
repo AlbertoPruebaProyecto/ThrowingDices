@@ -10,7 +10,7 @@ class Classpj extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'name', 'class_skills', 'hit_dice'
+		'name', 'class_abilities', 'hit_dice'
 	];
 
 	public function skillLevelUp(){
@@ -23,5 +23,13 @@ class Classpj extends Model
 
 	public function characters(){
 		return $this->hasMany('App\Character', 'class_id');
+	}
+
+	/**
+	 * Use function explode on attribute 'class_abilities'
+	 * @return string array
+	 */
+	public function classAbilitiesExplode(){
+		return explode(';', $this->class_abilities);
 	}
 }

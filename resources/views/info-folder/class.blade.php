@@ -84,7 +84,7 @@ $classSelected = Classpj::where('name', $className)->first();
 			<h4 class="widget-title"> @lang('classes.title-skills') </h4>
 			<table class="table table-striped">
 				<tbody>
-					@foreach (explode(";", $classSelected->class_abilities) as $element)
+					@foreach ($classSelected->classAbilitiesExplode() as $element)
 					<tr>
 						<td><center> @lang('skills.'.$element) </center></td>
 					</tr>
