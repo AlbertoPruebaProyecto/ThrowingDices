@@ -16,4 +16,8 @@ class Party extends Model
 	public function master(){
 		return $this->belongsTo('App\User');
 	}
+
+	public function characters(){
+		return $this->hasMany('App\Character');
+	}
 }

@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function partyMaster(){
         return $this->hasMany('App\Party', 'master_id');
     }
+
+    public function characters(){
+        return $this->hasMany('App\Character');
+    }
 }

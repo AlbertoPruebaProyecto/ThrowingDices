@@ -12,4 +12,8 @@ class Race extends Model
 	protected $fillable = [
 		'name', 'update_skills'
 	];
+
+	public function characters(){
+		return $this->hasMany('App\Character');
+	}
 }

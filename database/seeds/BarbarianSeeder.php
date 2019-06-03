@@ -13,9 +13,9 @@ class BarbarianSeeder extends Seeder
     {
     	// CLASS
     	DB::table('classes')->insert([
-    		'name'          =>  'barbarian',
-    		'class_skills'  =>  'acrobatics;craftwork;intimidate;ride;swim;perception;wisdom_nature;survival;animal_contact;climb',
-    		'hit_dice'      =>  'd12',
+    		'name'            =>  'barbarian',
+    		'class_abilities' =>  'acrobatics;craftwork;intimidate;ride;swim;perception;wisdom_nature;survival;animal_contact;climb',
+    		'hit_dice'        =>  'd12',
     	]);
 
     	// LEVEL UP

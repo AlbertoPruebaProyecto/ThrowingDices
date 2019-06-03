@@ -13,9 +13,9 @@ class PaladinSeeder extends Seeder
     {
         // CLASS
     	DB::table('classes')->insert([
-    		'name'          =>  'paladin',
-    		'class_skills'  =>  'craftwork;discover_intentions;knowledge_spells;heal;diplomacy;ride;wisdom_nobility;wisdom_religion;animal_contact',
-    		'hit_dice'      =>  'd10',
+    		'name'            =>  'paladin',
+    		'class_abilities' =>  'craftwork;discover_intentions;knowledge_spells;heal;diplomacy;ride;wisdom_nobility;wisdom_religion;animal_contact',
+    		'hit_dice'        =>  'd10',
     	]);
 
     	// LEVEL UP

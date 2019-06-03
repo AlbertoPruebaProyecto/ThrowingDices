@@ -12,4 +12,8 @@ class Level extends Model
 	protected $fillable = [
 		'num', 'exp_limit'
 	];
+
+	public function characters(){
+		return $this->hasMany('App\Character');
+	}
 }

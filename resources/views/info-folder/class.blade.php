@@ -64,7 +64,7 @@ $classSelected = Classpj::where('name', $className)->first();
 						<th> @lang('classes.title-table-will') </th>
 						<th> @lang('classes.title-table-special') </th>
 					</tr>
-					@foreach ($classSelected->SkillLevelUp as $element)
+					@foreach ($classSelected->skillLevelUp as $element)
 					<tr>
 						<td>{{ $element->level }}</td>
 						<td>{{ $element->base_atack }}</td>
@@ -84,7 +84,7 @@ $classSelected = Classpj::where('name', $className)->first();
 			<h4 class="widget-title"> @lang('classes.title-skills') </h4>
 			<table class="table table-striped">
 				<tbody>
-					@foreach (explode(";", $classSelected->class_skills) as $element)
+					@foreach (explode(";", $classSelected->class_abilities) as $element)
 					<tr>
 						<td><center> @lang('skills.'.$element) </center></td>
 					</tr>
@@ -102,7 +102,7 @@ $classSelected = Classpj::where('name', $className)->first();
 		</div>
 	</div>
 
-	@foreach ($classSelected->SpecialAptitudes as $element)
+	@foreach ($classSelected->specialAptitudes as $element)
 	<div class="col-md-4 col-sm-6">
 		<div class="widget no-glutter p-lg scroll-card">
 			<h3 class="widget-title text-primary"> {{ $element->name }} </h3>

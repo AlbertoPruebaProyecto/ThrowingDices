@@ -13,9 +13,9 @@ class BardSeeder extends Seeder
     {
         // CLASS
     	DB::table('classes')->insert([
-    		'name'          =>  'bard',
-    		'class_skills'  =>  'acrobatics;craftwork;discover_intentions;knowledge_spells;diplomacy;dress_up;trickery;escapism;play;intimidate;hand_game;linguistics;perception;wisdom_arcane;wisdom_dungeons;wisdom_geography;wisdom_history;wisdom_ingineering;wisdom_local;wisdom_map;wisdom_nature;wisdom_nobility;wisdom_religion;discretion;valuation;climb;use_magic_object',
-    		'hit_dice'      =>  'd8',
+    		'name'            =>  'bard',
+    		'class_abilities' =>  'acrobatics;craftwork;discover_intentions;knowledge_spells;diplomacy;dress_up;trickery;escapism;play;intimidate;hand_game;linguistics;perception;wisdom_arcane;wisdom_dungeons;wisdom_geography;wisdom_history;wisdom_ingineering;wisdom_local;wisdom_map;wisdom_nature;wisdom_nobility;wisdom_religion;discretion;valuation;climb;use_magic_object',
+    		'hit_dice'        =>  'd8',
     	]);
 
     	// LEVEL UP
