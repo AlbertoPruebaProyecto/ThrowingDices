@@ -35,7 +35,7 @@
 		</div>
 		@endif
 
-		<form class="form-horizontal" action="form-new-party" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" action="/form-new-party" method="post" enctype="multipart/form-data">
 			{!! csrf_field() !!}
 			<div class="form-group">
 				<label for="name" class="col-sm-2 col-sm-offset-2 control-label">

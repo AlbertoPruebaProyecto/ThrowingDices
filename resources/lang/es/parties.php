@@ -10,11 +10,15 @@ return [
 	'btnFormNewParty'		=>	'Crear partida',
 	'createParty'			=>	'La partida se ha creado correctamente',
 
-	/*JOIN PARTY*/
+	/* JOIN PARTY */
+	'players'	=>	'Jugadores',
+	'joined'	=>	'Estás unido',
+	'notJoined'	=>	'No estás unido',
+	'isMaster'	=>	'Eres el máster',
 
+	/* PARTIES */
 
-	/*PARTIES*/
-
-
+	/* CREATE CHARACTER */
+	'titleCreateCharacter'	=>	'Diseña tu personaje',
 ];
 ?>

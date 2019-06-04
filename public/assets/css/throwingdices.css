@@ -31,6 +31,14 @@
 	display: inline-block;
 }
 
+.icon-button-dice {
+	width: 50px;
+	height: 50px;
+	border: 0px solid #ccc;
+	text-align: center;
+	display: inline-block;
+}
+
 .icon-money {
 	width: 20px;
 	height: 20px;
@@ -77,4 +85,18 @@ div.text-inline h4,
 div.text-inline p{
 	display: inline;
 	vertical-align: top;
+}
+
+.desc-race{
+	text-align: justify;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.desc-class{
+	text-align: justify;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 }

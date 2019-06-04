@@ -45,17 +45,19 @@ Route::group(['middleware' => 'auth'], function (){
 		return redirect('/');
 	});
 
+	Route::get('races/{name}', function($name){ return view('info-folder.race')->with('race', $name);	});
+	Route::get('classes/{name}', function($name){ return view('info-folder.class')->with('className', $name); });
+	Route::get('objects/{option}', function($option){ return view('info-folder.equipment')->with('filter', $option); });
+	Route::get('spells', function(){ return view('info-folder.spellsList'); });
+
 	Route::get('parties', function(){ return view('parties.parties'); });
 	Route::get('join-party', function(){ return view('parties.join-party'); });
 	Route::get('new-party', function(){ return view('parties.new-party'); });
 
-	Route::get('races/{name}', function($name){ return view('info-folder.race')->with('race', $name);	});
-	Route::get('classes/{name}', function($name){ return view('info-folder.class')->with('className', $name); });
-	Route::get('objects/{option}', function($option){ return view('info-folder.equipment')->with('filter', $option); });
-
-	Route::get('spells', function(){ return view('info-folder.spellsList'); });
+	Route::get('join-party/{idParty}', 'PartyController@join');
 
 	Route::post('form-new-party', 'PartyController@create');
+	Route::post('form-new-character', 'PartyController@createCharacter');
 });
 
 Route::get('/prueba', function(){
