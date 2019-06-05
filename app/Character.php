@@ -28,11 +28,11 @@ class Character extends Model
 	}
 
 	public function classpj(){
-		return $this->belongsTo('App\Classpj');
+		return $this->belongsTo('App\Classpj', 'class_id');
 	}
 
 	public function money(){
-		return $this->belongsTo('App/Money');
+		return $this->belongsTo('App\Money');
 	}
 
 	public function abilities(){

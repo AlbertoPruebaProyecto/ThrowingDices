@@ -22,8 +22,8 @@ class Party extends Model
 	}
 
 	public function isJoin($userId){
-		foreach ($this->characters() as $character) {
-			if ($character->id == $userId) {
+		foreach ($this->characters as $character) {
+			if ($character->user->id == $userId) {
 				return true;
 			}
 		}

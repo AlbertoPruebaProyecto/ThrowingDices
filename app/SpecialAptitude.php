@@ -14,7 +14,7 @@ class SpecialAptitude extends Model
 	];
 
 	public function classpj(){
-		return $this->belongsTo('App\Classpj');
+		return $this->belongsTo('App\Classpj', 'class_id');
 	}
 
 	public function characters(){

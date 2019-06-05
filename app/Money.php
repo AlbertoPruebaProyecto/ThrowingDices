@@ -17,7 +17,7 @@ class Money extends Model
 		return $this->hasMany('App\Object');
 	}
 
-	public function character(){
+	public function characters(){
 		return $this->hasMany('App\Character');
 	}
 }

@@ -179,5 +179,12 @@ return [
         'message'               => 'mensaje',
         'image'                 => 'imagen',
         'numPlayers'            => 'número de jugadores',
+        'history'               =>  'historia',
+        'strength'              =>  'fuerza',
+        'skill'                 =>  'destreza',
+        'constitution'          =>  'constitución',
+        'intelligence'          =>  'inteligencia',
+        'wisdom'                =>  'sabiduría',
+        'charisma'              =>  'carisma',
     ],
 ];

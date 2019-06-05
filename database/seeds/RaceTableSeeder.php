@@ -25,7 +25,7 @@ class RaceTableSeeder extends Seeder
         ]);
         DB::table('races')->insert([
             'name'          =>  'human',
-            'update_skills' =>  'any+2'
+            'update_skills' =>  'skill+2;strength+2'
         ]);
         DB::table('races')->insert([
             'name'          =>  'medium',
@@ -33,11 +33,11 @@ class RaceTableSeeder extends Seeder
         ]);
         DB::table('races')->insert([
             'name'          =>  'semielf',
-            'update_skills' =>  'any+2'
+            'update_skills' =>  'skill+2;strength+2'
         ]);
         DB::table('races')->insert([
             'name'          =>  'orc',
-            'update_skills' =>  'any+2'
+            'update_skills' =>  'skill+2;strength+2'
         ]);
     }
 }

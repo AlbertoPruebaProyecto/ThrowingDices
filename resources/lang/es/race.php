@@ -16,6 +16,7 @@ return [
 	<br><u>Magia élfica</u>: los elfos obtienen un bonificador +2 racial a las pruebas de nivel de lanzador llevadas a cabo para superar la resistencia a los conjuros. Además, obtienen un bonificador +2 racial a las pruebas de Conocimiento de conjuros que tienen como objetivo identificar las propiedades de los objetos mágicos.
 	<br><u>Sentidos agudos</u>: los elfos obtienen un bonificador +2 racial a las pruebas de Percepción.
 	<br><u>Familiaridad con las armas</u>: los elfos son competentes con los arcos largos (incluyendo los arcos largos compuestos), las espadas largas, las espadas roperas, y los arcos cortos (incluyendo los arcos cortos compuestos), y tratan cualquier arma con la palabra ‘élfico’ en su nombre como un arma marcial. Idiomas: los elfos empiezan el juego hablando común y elfo. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger entre los siguientes: celestial, dracónico, goblin, gnoll, gnomo, orco, y silvano.',
+	'skills-elf'	=>	'<u>+2 a Destreza, +2 a Inteligencia, -2 a Constitución</u>',
 
 	//Dwafs
 	'name-dwaf'				=>	'Enanos',
@@ -36,6 +37,7 @@ return [
 	<br><u>Estabilidad</u>: los enanos obtienen un bonificador +4 racial a su Defensa contra maniobras de combate, cuando resisten a una embestida o intento de derribo estando de pie.
 	<br><u>Afinidad con la piedra</u>: los enanos obtienen un bonificador +2 a las pruebas de Percepción para darse cuenta de trabajos en piedra poco usuales, como trampas y puertas ocultas situadas en muros o suelos de piedra. Tienen derecho a una prueba para darse cuenta de tales rasgos siempre que pasan a 10 pies (3 m) o menos de alguno de ellos, tanto si están buscando activamente como si no. Familiaridad con las armas: los enanos son competentes con hachas de batalla, picos pesados, y martillos de guerra, y tratan cualquier arma con la palabra ‘enano’ en su nombre como un arma marcial.
 	<br><u>Idiomas</u>: los enanos empiezan el juego hablando enano y común. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger de entre los siguientes: gigante, gnomo, goblin, infracomún, orco, y térraro.',
+	'skills-dwaf'	=>	'<u>+2 a Constitución, +2 a Sabiduría, -2 a Carisma</u>',
 
 	//Gnomes
 	'name-gnome'			=>	'Gnomos',
@@ -57,6 +59,7 @@ return [
 	<br><u>Obsesivo</u>: los gnomos obtienen un bonificador +2 racial a una habilidad de Artesanía o Profesión de su elección.
 	<br><u>Familiaridad con las armas</u>: los gnomos tratan cualquier arma con la palabra ‘gnomo’ en su nombre como marcial.
 	<br><u>Idiomas</u>: los gnomos empiezan el juego hablando común, gnomo, y silvano. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger entre los siguientes: dracónico, elfo, enano, gigante, goblin, y orco.',
+	'skills-gnome'	=>	'<u>+2 a Constitución, +2 a Carisma, -2 a Fuerza</u>',
 
 	//Humans
 	'name-human'			=>	'Humanos',
@@ -72,6 +75,7 @@ return [
 	<br><u>Dote adicional</u>: los humanos seleccionan una dote adicional a 1er nivel.
 	<br><u>Hábil</u>: los humanos obtienen un rango de habilidad adicional a 1er nivel, y otro rango adicional cada vez que suben de nivel.
 	<br><u>Idiomas</u>: los humanos empiezan el juego hablando común. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger cualquier idioma que quieran (excepto idiomas secretos como el druídico).',
+	'skills-human'	=>	'<u>+2 a Destreza, +2 a Fuerza</u>',
 
 	//Mediums
 	'name-medium'			=>	'Medianos',
@@ -92,6 +96,7 @@ return [
 	<br><u>Pies firmes</u>: los medianos obtienen un bonificador +2 racial a las pruebas de Acrobacias y de Trepar.
 	<br><u>Familiaridad con las armas</u>: los medianos son competentes con las hondas, y tratan cualquier arma con la palabra ‘mediano’ en el nombre como un arma marcial.
 	<br><u>Idiomas</u>: los medianos empiezan el juego hablando común y mediano. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger entre los siguientes: elfo, enano, gnomo, y goblin.',
+	'skills-medium'	=>	'<u>+2 a Destreza, +2 a Carisma, -2 a Fuerza</u>',
 
 	//Semielfs
 	'name-semielf'			=>	'Semielfos',
@@ -112,6 +117,7 @@ return [
 	<br><u>Sentidos agudos</u>: los semielfos obtienen un bonificador +2 racial a las pruebas de Percepción.
 	<br><u>Multitalento</u>: los semielfos escogen dos clases favoritas a 1er nivel y obtienen +1 punto de golpe o +1 punto de habilidad cada vez que suben un nivel en cualquiera de dichas clases. Consulta el Capítulo 3 para más información sobre las clases favoritas.
 	<br><u>Idiomas</u>: los semielfos empiezan el juego hablando común y elfo. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger cualquier idioma que deseen (excepto idiomas secretos como el druídico).',
+	'skills-semielf'	=>	'<u>+2 a Destreza, +2 a Fuerza</u>',
 
 	//Semiorcs
 	'name-orc'			=>	'Semiorcos',
@@ -130,6 +136,7 @@ return [
 	<br><u>Ferocidad orca</u>: 1 vez al día, si un semiorco queda reducido a menos de 0 puntos de golpe pero no resulta muerto, puede luchar durante 1 asalto más como si estuviera incapacitado. Al final de su siguiente turno, a menos que se le lleve por encima de los 0 puntos de golpe, queda inconsciente de inmediato y empieza a morir.
 	<br><u>Familiaridad con las armas</u>: los semiorcos son competentes con las grandes hachas y los alfanjes, y tratan cualquier arma con la palabra ‘orco’ en su nombre como un arma marcial.
 	<br><u>Idiomas</u>: los semiorcos empiezan el juego hablando común y orco. Los que tienen puntuaciones de Inteligencia elevadas pueden escoger entre los siguientes: abisal, dracónico, gigante, gnoll, y goblin.',
+	'skills-orc'	=>	'<u>+2 a Destreza, +2 a Fuerza</u>',
 
 	//General
 	'title-desc-physical'	=>	'Descripción física',

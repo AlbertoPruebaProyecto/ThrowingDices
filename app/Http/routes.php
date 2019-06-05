@@ -12,6 +12,8 @@
 */
 use \App\User;
 use \App\Party;
+use \App\Race;
+use \App\Character;
 
 Route::get('/', function () {
 	return Auth::check()? view('index'):  view('welcome');
@@ -60,32 +62,4 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::post('form-new-character', 'PartyController@createCharacter');
 });
 
-Route::get('/prueba', function(){
-	/*
-	$newUser = new User(array(
-		'name' 		=> 'usuario',
-		'email' 	=> 'user@gmail.com',
-		'password' 	=> bcrypt('pass'),
-		'image' 	=> 'usuario.jpg',
-		'is_admin' 	=> true
-	));
-	$newUser->save();
-	*//*
-	$party = new Party(array(
-		'name' => 'party1',
-		'num_players' => 4,
-		'state' => 'active',
-		'master_id' => 1
-	));
-	$party->save();
-	*//*
-	$user = User::find(1);
-	foreach ($user->partyMaster as $key) {
-		var_dump($key->name);
-	}
-	*//*
-	$party = Party::find(1);
-	var_dump($party->master->name);
-	*/
-	return 'cool';
-});
+Route::get('/prueba', 'PartyController@addAbilitiesCharacter');

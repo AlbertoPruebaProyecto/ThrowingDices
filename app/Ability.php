@@ -11,7 +11,7 @@ class Ability extends Model
 
 	protected $guarded = array();
 
-	public function(){
+	public function characters(){
 		return $this->belongsTo('App\Character');
 	}
 }

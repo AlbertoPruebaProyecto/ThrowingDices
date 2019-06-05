@@ -61,6 +61,16 @@ $classpjs = Classpj::all();
 							</div>
 						</div>
 						<!-- End Name -->
+						<!-- Age -->
+						<div class="form-group">
+							<label for="age" class="col-sm-4 col-sm-offset-0 control-label">
+								Edad de tu personaje
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="age" class="form-control">
+							</div>
+						</div>
+						<!-- End Age -->
 						<!-- Sex -->
 						<div class="form-group">
 							<label for="sex" class="col-sm-4 col-sm-offset-0 control-label">
@@ -100,7 +110,7 @@ $classpjs = Classpj::all();
 									Fuerza
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="strength" id="strength" class="form-control" disabled>
+									<input type="text" name="strength" id="strength" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -112,7 +122,7 @@ $classpjs = Classpj::all();
 									Destreza
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="skill" id="skill" class="form-control" disabled>
+									<input type="text" name="skill" id="skill" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -124,7 +134,7 @@ $classpjs = Classpj::all();
 									Constitución
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="constitution" id="constitution" class="form-control" disabled>
+									<input type="text" name="constitution" id="constitution" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -136,7 +146,7 @@ $classpjs = Classpj::all();
 									Inteligencia
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="intelligence" id="intelligence" class="form-control" disabled>
+									<input type="text" name="intelligence" id="intelligence" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -148,7 +158,7 @@ $classpjs = Classpj::all();
 									Sabiduria
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="wisdom" id="wisdom" class="form-control" disabled>
+									<input type="text" name="wisdom" id="wisdom" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -160,7 +170,7 @@ $classpjs = Classpj::all();
 									Carisma
 								</label>
 								<div class="col-sm-3">
-									<input type="text" name="charisma" id="charisma" class="form-control" disabled>
+									<input type="text" name="charisma" id="charisma" class="form-control" readonly>
 								</div>
 							</div>
 						</div>
@@ -195,6 +205,7 @@ $classpjs = Classpj::all();
 							@foreach ($races as $race)
 							<div {{ $race == $races[0]? '': 'hidden' }} class="div-race div-{{ $race->name }}">
 								<p class="desc-race">{{ trans('race.desc-'.$race->name) }}</p>
+								<p class="desc-race">{!! trans('race.skills-'.$race->name) !!}</p>
 							</div>
 							@endforeach
 						</div>
@@ -266,12 +277,13 @@ $classpjs = Classpj::all();
 <script>
 	$(document).ready(function(){
 		$('#btnStats').click(function(){
-			$('#strength').val(Math.floor(Math.random() * (20 - 0) + 1));
-			$('#skill').val(Math.floor(Math.random() * (20 - 0) + 1));
-			$('#constitution').val(Math.floor(Math.random() * (20 - 0) + 1));
-			$('#wisdom').val(Math.floor(Math.random() * (20 - 0) + 1));
-			$('#intelligence').val(Math.floor(Math.random() * (20 - 0) + 1));
-			$('#charisma').val(Math.floor(Math.random() * (20 - 0) + 1));
+			//$('#strength').val(Math.floor(Math.random() * (20 - 1) + 1));
+			document.getElementById("strength").value = Math.floor(Math.random() * (20 - 1) + 1);
+			$('#skill').val(Math.floor(Math.random() * (20 - 1) + 1));
+			$('#constitution').val(Math.floor(Math.random() * (20 - 1) + 1));
+			$('#wisdom').val(Math.floor(Math.random() * (20 - 1) + 1));
+			$('#intelligence').val(Math.floor(Math.random() * (20 - 1) + 1));
+			$('#charisma').val(Math.floor(Math.random() * (20 - 1) + 1));
 		});
 	});
 

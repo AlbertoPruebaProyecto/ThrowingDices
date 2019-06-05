@@ -32,4 +32,13 @@ class Classpj extends Model
 	public function classAbilitiesExplode(){
 		return explode(';', $this->class_abilities);
 	}
+
+	public function isAbilityFromClass($abilityName){
+		foreach ($this->classAbilitiesExplode() as $ability) {
+			if ($ability == $abilityName) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
