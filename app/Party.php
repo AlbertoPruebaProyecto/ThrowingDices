@@ -30,11 +30,22 @@ class Party extends Model
 		return false;
 	}
 
+	public function checkReady(){
+		if (count($this->characters) == $this->num_players) {
+			$this->state = 'active';
+			$this->save();
+		}
+	}
+
 	public function isMaster($userId){
 		return $this->master_id == $userId;
 	}
 
 	public function isOnPrepare(){
 		return $this->state == 'onPrepare';
+	}
+
+	public function isActive(){
+		return $this->state == 'active';
 	}
 }

@@ -106,6 +106,8 @@ class PartyController extends Controller
 		]);
 		$newCharacter->save();
 
+		$newCharacter->party->checkReady();
+
 		$this->saveAbility($newCharacter, 'acrobatics', false, 'skill');
 		$this->saveAbility($newCharacter, 'craftwork', false, 'intelligence');
 		$this->saveAbility($newCharacter, 'discover_intentions', false, 'wisdom');
@@ -152,5 +154,40 @@ class PartyController extends Controller
 			'character_id'	=>	$character->id,
 		]);
 		$newAbility->save();
+	}
+
+	public function showPartyCharacter($idParty){
+		$party = Party::find($idParty);
+
+		if (!$party) {
+			return redirect::back()->withErrors('La partida seleccionada no existe');
+		}
+		if ($party->isMaster(Auth::id())) {
+			return redirect::back()->withErrors('No puedes entrar como jugador porque eres el master');
+		}
+		if (!$party->isActive()) {
+			return redirect::back()->withErrors('Todos los jugadores aún no se han creado');
+		}
+		if (!$party->isJoin(Auth::id())) {
+			return redirect::back()->withErrors('No formas parte de esa partida');
+		}
+
+		return 'eres personaje jugador';
+	}
+
+	public function showPartyMaster($idParty){
+		$party = Party::find($idParty);
+
+		if (!$party) {
+			return redirect::back()->withErrors('La partida seleccionada no existe');
+		}
+		if (!$party->isMaster(Auth::id())) {
+			return redirect::back()->withErrors('No puedes entrar como master porque no lo eres');
+		}
+		if (!$party->isActive()) {
+			return redirect::back()->withErrors('Todos los jugadores aún no se han creado');
+		}
+
+		return 'eres master';
 	}
 }

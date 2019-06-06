@@ -17,6 +17,8 @@ return [
 	'isMaster'	=>	'Eres el máster',
 
 	/* PARTIES */
+	'onPrepare'	=>	'La partida se está formando',
+	'active'	=>	'La partida está en activo',
 
 	/* CREATE CHARACTER */
 	'titleCreateCharacter'	=>	'Diseña tu personaje',

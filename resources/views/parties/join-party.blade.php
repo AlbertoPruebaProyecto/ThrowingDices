@@ -24,7 +24,7 @@ Use App\Party;
 </div>
 @endif
 
-@foreach (Party::where('state', '=', 'onPrepare')->get() as $party)
+@forelse (Party::where('state', '=', 'onPrepare')->get() as $party)
 <div class="col-lg-3 col-md-4 col-sm-6">
 	<a href="join-party/{{ $party->id }}" class="m-r-xs theme-color">
 		<div class="thumbnail white">
@@ -49,6 +49,12 @@ Use App\Party;
 		</div>
 	</a>
 </div>
-@endforeach
+@empty
+<div class="col-sm-12">
+	<div class="widget no-glutter p-lg">
+		<h3 class="widget-title fz-lg m-b-lg"> No existe ninguna partida a la que poder unirse </h3>
+	</div>
+</div>
+@endforelse
 
 @stop
