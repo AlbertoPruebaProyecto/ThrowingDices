@@ -25,11 +25,8 @@ class PartyController extends Controller
 			'name'			=>	'required|unique:parties',
 			'description'	=>	'required',
 			'numPlayers'	=>	'required|numeric',
-			'image'			=> 	'required|image|mimes:jpg,jpeg,bmp,gif,png|max:'.Config::get('app.photo_max_size')
+			'image'			=> 	'required'
 		]);
-
-		$nameImage = str_replace(' ', '_', $request->input('name')).'.'.$request->file('image')->extension();
-		$request->file('image')->move(Config::get('app.url_image_party'), $nameImage);
 
 		$newParty = Party::create([
 			'name'	=>	$request->input('name'),
@@ -37,7 +34,7 @@ class PartyController extends Controller
 			'state'			=>	'onPrepare',
 			'master_id'		=>	Auth::id(),
 			'description'	=>	$request->input('description'),
-			'image'			=>	$nameImage
+			'image'			=>	$request->input('image').'.jpg'
 		]);
 		$newParty->save();
 

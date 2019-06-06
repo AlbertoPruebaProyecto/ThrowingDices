@@ -62,11 +62,22 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="image" class="col-sm-2 col-sm-offset-2 control-label">
-					@lang('parties.imgFormNewParty')
-				</label>
+				<div for="image" class="col-sm-2 col-sm-offset-2 control-label">
+					<label>
+						@lang('parties.imgFormNewParty')
+					</label>
+					<select name="image" id="selectImage" class="form-control" onchange="changeImage()">
+						@for ($i = 1; $i <= 6; $i++)
+						<option value="image_{{ $i }}">Imagen {{ $i }}</option>
+						@endfor
+					</select>
+				</div>
 				<div class="col-sm-5">
-					<input type="file" name="image" class="form-control">
+					@for ($i = 1; $i <= 6; $i++)
+					<div {{ $i == 1? '': 'hidden' }} class="all-images image_{{ $i }}">
+						<img src="{{ Config::get('app.url_image_party').'/image_'.$i.'.jpg' }}">
+					</div>
+					@endfor
 				</div>
 			</div>
 			<div class="row">
@@ -80,3 +91,13 @@
 	</div>
 </div>
 @stop
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	function changeImage(){
+		var numImage = document.getElementById("selectImage").value;
+		console.log(numImage);
+		$('.all-images').hide();
+		$('.'+numImage).show();
+	}
+</script>
