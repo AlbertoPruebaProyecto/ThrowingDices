@@ -62,4 +62,6 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::post('form-new-character', 'PartyController@createCharacter');
 });
 
-Route::get('/prueba', 'PartyController@addAbilitiesCharacter');
+Route::get('/prueba', function(){
+	return Character::find(10)->abilities;
+});

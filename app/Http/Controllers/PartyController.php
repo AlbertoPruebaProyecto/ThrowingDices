@@ -109,26 +109,41 @@ class PartyController extends Controller
 		]);
 		$newCharacter->save();
 
-		$this->addAbilitiesCharacter($newCharacter);
+		$this->saveAbility($newCharacter, 'acrobatics', false, 'skill');
+		$this->saveAbility($newCharacter, 'craftwork', false, 'intelligence');
+		$this->saveAbility($newCharacter, 'discover_intentions', false, 'wisdom');
+		$this->saveAbility($newCharacter, 'knowledge_spells', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'diplomacy', false, 'charisma');
+		$this->saveAbility($newCharacter, 'dress_up', false, 'charisma');
+		$this->saveAbility($newCharacter, 'trickery', false, 'charisma');
+		$this->saveAbility($newCharacter, 'escapism', false, 'skill');
+		$this->saveAbility($newCharacter, 'play', false, 'charisma');
+		$this->saveAbility($newCharacter, 'intimidate', false, 'charisma');
+		$this->saveAbility($newCharacter, 'render_machine', true, 'skill');
+		$this->saveAbility($newCharacter, 'hand_game', true, 'skill');
+		$this->saveAbility($newCharacter, 'linguistics', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'ride', false, 'skill');
+		$this->saveAbility($newCharacter, 'swim', false, 'strength');
+		$this->saveAbility($newCharacter, 'perception', false, 'wisdom');
+		$this->saveAbility($newCharacter, 'wisdom_arcane', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_dungeons', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_geography', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_history', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_ingineering', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_local', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_map', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_nature', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_nobility', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'wisdom_religion', true, 'intelligence');
+		$this->saveAbility($newCharacter, 'discretion', false, 'skill');
+		$this->saveAbility($newCharacter, 'survival', false, 'wisdom');
+		$this->saveAbility($newCharacter, 'valuation', false, 'intelligence');
+		$this->saveAbility($newCharacter, 'animal_contact', true, 'charisma');
+		$this->saveAbility($newCharacter, 'climb', false, 'strength');
+		$this->saveAbility($newCharacter, 'use_magic_object', true, 'charisma');
+		$this->saveAbility($newCharacter, 'fly', false, 'skill');
 
-		//return Classpj::where('name', $request->input('classpj'))->get();
 		return redirect('/parties')->with('send', 'Te has unido a la partida correctamente');
-	}
-
-	public function addAbilitiesCharacter(){
-
-		$character = Character::find(7);
-
-		//TODO hacer la función privada y poner Character como parámetro de entrada
-
-		$this->saveAbility($character, 'acrobatics', false, 'skill');
-		$this->saveAbility($character, 'craftwork', false, 'intelligence');
-		$this->saveAbility($character, 'discover_intentions', false, 'wisdom');
-		$this->saveAbility($character, 'knowledge_spells', true, 'intelligence');
-		$this->saveAbility($character, 'heal', true, 'wisdom');
-		//TODO añadir más habilidades
-
-		return $character->abilities;
 	}
 
 	private function saveAbility(Character $character, String $name, Bool $onlyLearn, String $skillBase){
