@@ -195,8 +195,14 @@ class PartyController extends Controller
 
 	public function getDataCharacter(Request $request){
 		$character = Character::find($request->input('character_id'));
-		$character->experience = 100;
-		$character->save();
-		return 100;
+
+		$data = [
+			'level'			=>	$character->level->num,
+			'exp'			=>	$character->experience,
+			'expLimit'		=>	$character->level->exp_limit,
+			'livePercentage'=>	$character->livePercentage(),
+		];
+
+		return response()->json($data);
 	}
 }
