@@ -21,6 +21,15 @@ class Party extends Model
 		return $this->hasMany('App\Character');
 	}
 
+	public function getCharacter($userId){
+		foreach ($this->characters as $character) {
+			if ($character->user->id == $userId) {
+				return $character;
+			}
+		}
+		return null;
+	}
+
 	public function isJoin($userId){
 		foreach ($this->characters as $character) {
 			if ($character->user->id == $userId) {

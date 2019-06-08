@@ -50,4 +50,8 @@ class Character extends Model
 	public function equipments(){
 		return $this->belongsToMany('App\Equipment', 'characters_equipments');
 	}
+
+	public function livePercentage(){
+		return ($this->hit_points_present * 100)/$this->hit_points_total;
+	}
 }

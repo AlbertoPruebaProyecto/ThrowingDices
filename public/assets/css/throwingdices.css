@@ -100,3 +100,11 @@ div.text-inline p{
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+div.text-inline-character{
+	margin-bottom: 10px;
+}
+div.text-inline-character h4,
+div.text-inline-character p{
+	display: inline;
+}

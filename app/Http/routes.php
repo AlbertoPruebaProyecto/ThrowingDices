@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('show-party-master/{idParty}', 'PartyController@showPartyMaster');
 	Route::get('show-party-character/{idParty}', 'PartyController@showPartyCharacter');
 
+	Route::get('get-data-character', 'PartyController@getDataCharacter');
+
 	Route::post('form-new-party', 'PartyController@create');
 	Route::post('form-new-character', 'PartyController@createCharacter');
 });

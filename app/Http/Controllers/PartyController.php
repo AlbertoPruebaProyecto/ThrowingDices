@@ -87,22 +87,24 @@ class PartyController extends Controller
 		$newWallet->save();
 
 		$newCharacter = Character::create([
-			'name'			=>	$request->input('name'),
-			'sex'			=>	$request->input('sex'),
-			'age'			=>	$request->input('age'),
-			'history'		=>	$request->input('history'),
-			'strength'		=>	$request->input('strength') + $race->getSkillsStats('strength'),
-			'skill'			=>	$request->input('skill') + $race->getSkillsStats('skill'),
-			'constitution'	=>	$request->input('constitution') + $race->getSkillsStats('constitution'),
-			'intelligence'	=>	$request->input('intelligence') + $race->getSkillsStats('intelligence'),
-			'wisdom'		=>	$request->input('wisdom') + $race->getSkillsStats('wisdom'),
-			'charisma'		=>	$request->input('charisma') + $race->getSkillsStats('charisma'),
-			'party_id'		=>	$request->input('idParty'),
-			'level_id'		=>	Level::where('num', '=', 1)->first()->id,
-			'class_id'		=>	$classpj->id,
-			'race_id'		=>	$race->id,
-			'money_id'		=>	$newWallet->id,
-			'user_id'		=>	Auth::id(),
+			'name'				=>	$request->input('name'),
+			'sex'				=>	$request->input('sex'),
+			'age'				=>	$request->input('age'),
+			'history'			=>	$request->input('history'),
+			'strength'			=>	$request->input('strength') + $race->getSkillsStats('strength'),
+			'skill'				=>	$request->input('skill') + $race->getSkillsStats('skill'),
+			'constitution'		=>	$request->input('constitution') + $race->getSkillsStats('constitution'),
+			'intelligence'		=>	$request->input('intelligence') + $race->getSkillsStats('intelligence'),
+			'wisdom'			=>	$request->input('wisdom') + $race->getSkillsStats('wisdom'),
+			'charisma'			=>	$request->input('charisma') + $race->getSkillsStats('charisma'),
+			'hit_points_total'	=>	20,
+			'hit_points_present'=>	20,
+			'party_id'			=>	$request->input('idParty'),
+			'level_id'			=>	Level::where('num', '=', 1)->first()->id,
+			'class_id'			=>	$classpj->id,
+			'race_id'			=>	$race->id,
+			'money_id'			=>	$newWallet->id,
+			'user_id'			=>	Auth::id(),
 		]);
 		$newCharacter->save();
 
@@ -172,7 +174,7 @@ class PartyController extends Controller
 			return redirect::back()->withErrors('No formas parte de esa partida');
 		}
 
-		return 'eres personaje jugador';
+		return view('parties.party-character')->with('character', $party->getCharacter(Auth::id()));
 	}
 
 	public function showPartyMaster($idParty){
@@ -189,5 +191,12 @@ class PartyController extends Controller
 		}
 
 		return 'eres master';
+	}
+
+	public function getDataCharacter(Request $request){
+		$character = Character::find($request->input('character_id'));
+		$character->experience = 100;
+		$character->save();
+		return 100;
 	}
 }

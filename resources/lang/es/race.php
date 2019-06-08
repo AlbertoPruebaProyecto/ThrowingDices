@@ -145,5 +145,16 @@ return [
 	'title-alignment'		=>	'Alineamiento y religión',
 	'title-adventure'		=>	'Aventureros',
 	'title-racial'			=>	'Rasgos raciales',
+	'man'					=>	'hombre',
+	'woman'					=>	'mujer',
+
+	//names
+	'elf'		=>	'elfo',
+	'dwaf'		=>	'enano',
+	'gnome'		=>	'gnomo',
+	'human'		=>	'humano',
+	'medium'	=>	'mediano',
+	'semielf'	=>	'semielfo',
+	'orc'		=>	'semiorco',
 ];
 ?>

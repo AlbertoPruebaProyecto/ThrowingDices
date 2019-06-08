@@ -13,7 +13,7 @@ class LevelTableSeeder extends Seeder
     {
     	DB::table('levels')->insert([
     		'num'		=>	1,
-    		'exp_limit'	=>	0,
+    		'exp_limit'	=>	1000,
     	]);
     	DB::table('levels')->insert([
     		'num'		=>	2,

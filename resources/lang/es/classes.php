@@ -31,5 +31,10 @@ return[
 	'title-levelup'			=>	'Tabla de subida de nivel',
 	'title-skills'			=>	'Habilidades de clase',
 	'title-special-aptitude'=>	'Aptitudes Especiales',
+
+	//names
+	'barbarian'	=>	'barbaro',
+	'bard'		=>	'bardo',
+	'paladin'	=>	'paladín',
 ];
 ?>

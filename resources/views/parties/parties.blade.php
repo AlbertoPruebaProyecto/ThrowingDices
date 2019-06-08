@@ -43,7 +43,7 @@ Use App\Party;
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<a href="show-party-master/{{ $party->id }}" class="m-r-xs theme-color">
 			<div class="thumbnail white">
-				<img src="{{ Config::get('app.url_image_party').'/'.$party->image }}"  style="max-height: 200px;">
+				<img src="{{ Config::get('app.url_image_party').'/'.$party->image }}">
 				<center>
 					<h3> {{ $party->name }} </h3>
 					<p>{{ $party->description }}</p>
@@ -79,7 +79,7 @@ Use App\Party;
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<a href="show-party-character/{{ $party->id }}" class="m-r-xs theme-color">
 			<div class="thumbnail white">
-				<img src="{{ Config::get('app.url_image_party').'/'.$party->image }}"  style="max-height: 200px;">
+				<img src="{{ Config::get('app.url_image_party').'/'.$party->image }}">
 				<center>
 					<h3> {{ $party->name }} </h3>
 					<p>{{ $party->description }}</p>
