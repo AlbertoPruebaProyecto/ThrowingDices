@@ -196,11 +196,71 @@ class PartyController extends Controller
 	public function getDataCharacter(Request $request){
 		$character = Character::find($request->input('character_id'));
 
+		$character->experience = $request->input('experience');
+
+		$character->strength = $request->input('strength');
+		$character->strength_temp = $request->input('strengthTemp');
+
+		$character->skill = $request->input('skill');
+		$character->skill_temp = $request->input('skillTemp');
+
+		$character->constitution = $request->input('constitution');
+		$character->constitution_temp = $request->input('constitutionTemp');
+
+		$character->intelligence = $request->input('intelligence');
+		$character->intelligence_temp = $request->input('intelligenceTemp');
+
+		$character->wisdom = $request->input('wisdom');
+		$character->wisdom_temp = $request->input('wisdomTemp');
+
+		$character->charisma = $request->input('charisma');
+		$character->charisma_temp = $request->input('charismaTemp');
+
+		$character->hit_points_present = $request->input('hitPointsPresent');
+		$character->hit_points_total = $request->input('hitPointsTotal');
+
+		$character->initiative = $request->input('initiative');
+
+		$character->save();
+
+		$character->changeLevel();
+		$character = Character::find($request->input('character_id'));
+
 		$data = [
 			'level'			=>	$character->level->num,
 			'exp'			=>	$character->experience,
 			'expLimit'		=>	$character->level->exp_limit,
 			'livePercentage'=>	$character->livePercentage(),
+
+			'strength'		=>	$character->strength,
+			'strengthMod'	=>	$character->modCharacter('strength'),
+			'strengthTemp'	=>	$character->strength_temp,
+
+			'skill'		=>	$character->skill,
+			'skillMod'	=>	$character->modCharacter('skill'),
+			'skillTemp'	=>	$character->skill_temp,
+
+			'constitution'		=>	$character->constitution,
+			'constitutionMod'	=>	$character->modCharacter('constitution'),
+			'constitutionTemp'	=>	$character->constitution_temp,
+
+			'intelligence'		=>	$character->intelligence,
+			'intelligenceMod'	=>	$character->modCharacter('intelligence'),
+			'intelligenceTemp'	=>	$character->intelligence_temp,
+
+			'wisdom'		=>	$character->wisdom,
+			'wisdomMod'		=>	$character->modCharacter('wisdom'),
+			'wisdomTemp'	=>	$character->wisdom_temp,
+
+			'charisma'		=>	$character->charisma,
+			'charismaMod'	=>	$character->modCharacter('charisma'),
+			'charismaTemp'	=>	$character->charisma_temp,
+
+			'hitPointsTotal'	=>	$character->hit_points_total,
+			'hitPointsPresent'	=>	$character->hit_points_present,
+
+			'initiative'		=>	$character->initiative,
+			'initiativeTotal'	=>	$character->initiativeTotal(),
 		];
 
 		return response()->json($data);
