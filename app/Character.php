@@ -66,50 +66,80 @@ class Character extends Model
 	public function modCharacter($filter){
 		if ($filter == 'strength') {
 			$stat = $this->strength;
+			$temporal = $this->strength_temp;
 		}elseif ($filter == 'skill') {
 			$stat = $this->skill;
+			$temporal = $this->skill_temp;
 		}elseif ($filter == 'constitution') {
 			$stat = $this->constitution;
+			$temporal = $this->constitution_temp;
 		}elseif ($filter == 'intelligence') {
 			$stat = $this->intelligence;
+			$temporal = $this->intelligence_temp;
 		}elseif ($filter == 'wisdom') {
 			$stat = $this->wisdom;
+			$temporal = $this->wisdom_temp;
 		}elseif ($filter == 'charisma') {
 			$stat = $this->charisma;
+			$temporal = $this->charisma_temp;
 		}
 
 		if ($stat <= 1 ) {
-			return -5;
+			return -5 + $temporal;
 		}elseif ($stat <= 3) {
-			return -4;
+			return -4 + $temporal;
 		}elseif ($stat <= 5) {
-			return -3;
+			return -3 + $temporal;
 		}elseif ($stat <= 7) {
-			return -2;
+			return -2 + $temporal;
 		}elseif ($stat <= 9) {
-			return -1;
+			return -1 + $temporal;
 		}elseif ($stat <= 11) {
-			return 0;
+			return 0 + $temporal;
 		}elseif ($stat <= 13) {
-			return 1;
+			return 1 + $temporal;
 		}elseif ($stat <= 15) {
-			return 2;
+			return 2 + $temporal;
 		}elseif ($stat <= 17) {
-			return 3;
+			return 3 + $temporal;
 		}elseif ($stat <= 19) {
-			return 4;
+			return 4 + $temporal;
 		}elseif ($stat <= 21) {
-			return 5;
+			return 5 + $temporal;
 		}elseif ($stat <= 23) {
-			return 6;
+			return 6 + $temporal;
 		}elseif ($stat <= 25) {
-			return 7;
+			return 7 + $temporal;
 		}else{
-			return 8;
+			return 8 + $temporal;
 		}
 	}
 
 	public function initiativeTotal(){
 		return ($this->initiative + $this->modCharacter('skill'));
+	}
+
+	public function armorTotal(){
+		return $this->modCharacter('skill') + $this->armor_bonus + 10;
+	}
+
+	public function BMC(){
+		return $this->base_attack + $this->modCharacter('strength');
+	}
+
+	public function DMC(){
+		return $this->base_attack + $this->modCharacter('strength') + $this->modCharacter('skill') + 10;
+	}
+
+	public function fortitudeTotal(){
+		return $this->fortitude_base + $this->fortitude_mod_var + $this->fortitude_temp + $this->modCharacter('constitution');
+	}
+
+	public function reflexTotal(){
+		return $this->reflex_base + $this->reflex_mod_var + $this->reflex_temp + $this->modCharacter('skill');
+	}
+
+	public function willTotal(){
+		return $this->will_base + $this->will_mod_var + $this->will_temp + $this->modCharacter('wisdom');
 	}
 }

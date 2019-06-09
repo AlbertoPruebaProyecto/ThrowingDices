@@ -196,155 +196,333 @@ Use App\Party;
 			<!-- BODY TABS STATS -->
 			<div class="tab-content p-md">
 				<div role="tabpanel" class="tab-pane fade in active" id="pincipalStats">
+					<!-- STATS PRINCIPAL -->
 					<div class="col-md-6">
-						<div>
-							<div class="col-md-3">
+						<div class="row">
+							<div>
+								<div class="col-md-3">
+								</div>
+								<div class="col-md-3">
+									<p align="center">Puntuación Caract.</p>
+								</div>
+								<div class="col-md-3">
+									<p align="center">Modificador Caract.</p>
+								</div>
+								<div class="col-md-3">
+									<p align="center">Modificador Temporal</p>
+								</div>
 							</div>
-							<div class="col-md-3">
-								<p align="center">Puntuación Caract.</p>
+							<!-- STRENGTH -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Fuerza</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->strength }}" id="strength" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control strengthMod" value="{{ $character->modCharacter('strength') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->strength_temp }}" id="strengthTemp" readonly>
+								</div>
 							</div>
-							<div class="col-md-3">
-								<p align="center">Modificador Caract.</p>
+							<!-- END STRENGTH -->
+							<!-- SKILL -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Destreza</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->skill }}" id="skill" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->skill_temp }}" id="skillTemp" readonly>
+								</div>
 							</div>
-							<div class="col-md-3">
-								<p align="center">Modificador Temporal</p>
+							<!-- END SKILL -->
+							<!-- CONSTITUTION -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Constitución</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->constitution }}" id="constitution" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control constitutionMod" value="{{ $character->modCharacter('constitution') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->constitution_temp }}" id="constitutionTemp" readonly>
+								</div>
+							</div>
+							<!-- END CONSTITUTION -->
+							<!-- INTELLIGENCE -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Inteligencia</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->intelligence }}" id="intelligence" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control intelligenceMod" value="{{ $character->modCharacter('intelligence') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->intelligence_temp }}" id="intelligenceTemp" readonly>
+								</div>
+							</div>
+							<!-- END INTELLIGENCE -->
+							<!-- WISDOM -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Sabiduría</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->wisdom }}" id="wisdom" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control wisdomMod" value="{{ $character->modCharacter('wisdom') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->wisdom_temp }}" id="wisdomTemp" readonly>
+								</div>
+							</div>
+							<!-- END WISDOM -->
+							<!-- WISDOM -->
+							<div>
+								<div class="col-md-3">
+									<p align="right">Carisma</p>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->charisma }}" id="charisma" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control charismaMod" value="{{ $character->modCharacter('charisma') }}" readonly>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control editable" value="{{ $character->charisma_temp }}" id="charismaTemp" readonly>
+								</div>
 							</div>
 						</div>
-						<!-- STRENGTH -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Fuerza</p>
+						<!-- END WISDOM -->
+						<hr>
+						<!-- SAVE THROW FORTITUDE -->
+						<div class="row">
+							<div class="col-md-12">
+								<p align="left">Tirada de salvación: Fortaleza (Constitución)</p>
 							</div>
 							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->strength }}" id="strength" readonly>
+								<input type="text" class="form-control" value="{{ $character->fortitudeTotal() }}" id="fortitudeTotal" readonly>
+								<p class="no-space">Total</p>
 							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control strengthMod" value="{{ $character->modCharacter('strength') }}" readonly>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
 							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->strength_temp }}" id="strengthTemp" readonly>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->fortitude_base }}" id="fortitudeBase" readonly>
+								<p class="no-space">Salvación Base</p>
 							</div>
-						</div>
-						<!-- END STRENGTH -->
-						<!-- SKILL -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Destreza</p>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->skill }}" id="skill" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->skill_temp }}" id="skillTemp" readonly>
-							</div>
-						</div>
-						<!-- END SKILL -->
-						<!-- CONSTITUTION -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Constitución</p>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->constitution }}" id="constitution" readonly>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<input type="text" class="form-control constitutionMod" value="{{ $character->modCharacter('constitution') }}" readonly>
+								<p class="no-space">Modif Const</p>
 							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->constitution_temp }}" id="constitutionTemp" readonly>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->fortitude_mod_var }}" id="fortitudeModVar" readonly>
+								<p class="no-space">Modif Vario</p>
 							</div>
-						</div>
-						<!-- END CONSTITUTION -->
-						<!-- INTELLIGENCE -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Inteligencia</p>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->intelligence }}" id="intelligence" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control intelligenceMod" value="{{ $character->modCharacter('intelligence') }}" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->intelligence_temp }}" id="intelligenceTemp" readonly>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->fortitude_temp }}" id="fortitudeTemp" readonly>
+								<p class="no-space">Modif Temp</p>
 							</div>
 						</div>
-						<!-- END INTELLIGENCE -->
-						<!-- WISDOM -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Sabiduría</p>
+						<!-- END SAVING THROW FORTITUDE -->
+						<hr class="no-space">
+						<!-- SAVIN THROW REFLEX -->
+						<div class="row">
+							<div class="col-md-12">
+								<p align="left">Tirada de salvación: Reflejos (Destreza)</p>
 							</div>
 							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->wisdom }}" id="wisdom" readonly>
+								<input type="text" class="form-control" value="{{ $character->reflexTotal() }}" id="reflexTotal" readonly>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->reflex_base }}" id="reflexBase" readonly>
+								<p class="no-space">Salvación Base</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
+								<p class="no-space">Modif Des</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->reflex_mod_var }}" id="reflexModVar" readonly>
+								<p class="no-space">Modif Vario</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->reflex_temp }}" id="reflexTemp" readonly>
+								<p class="no-space">Modif Temp</p>
+							</div>
+						</div>
+						<!-- END SAVIN THROW REFLEX -->
+						<hr class="no-space">
+						<!-- SAVIN THROW WILL -->
+						<div class="row">
+							<div class="col-md-12">
+								<p align="left">Tirada de salvación: Voluntad (Sabiduría)</p>
 							</div>
 							<div class="col-md-3">
+								<input type="text" class="form-control" value="{{ $character->willTotal() }}" id="willTotal" readonly>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->will_base }}" id="willBase" readonly>
+								<p class="no-space">Salvación Base</p>
+							</div>
+							<div class="col-md-2">
 								<input type="text" class="form-control wisdomMod" value="{{ $character->modCharacter('wisdom') }}" readonly>
+								<p class="no-space">Modif Sab</p>
 							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->wisdom_temp }}" id="wisdomTemp" readonly>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->will_mod_var }}" id="willModVar" readonly>
+								<p class="no-space">Modif Vario</p>
 							</div>
-						</div>
-						<!-- END WISDOM -->
-						<!-- WISDOM -->
-						<div>
-							<div class="col-md-3">
-								<p align="right">Carisma</p>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->charisma }}" id="charisma" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control charismaMod" value="{{ $character->modCharacter('charisma') }}" readonly>
-							</div>
-							<div class="col-md-3">
-								<input type="text" class="form-control editable" value="{{ $character->charisma_temp }}" id="charismaTemp" readonly>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->will_temp }}" id="willTemp" readonly>
+								<p class="no-space">Modif Temp</p>
 							</div>
 						</div>
-						<!-- END WISDOM -->
+						<!-- END SAVIN THROW WILL -->
 					</div>
+					<!-- END STATS PRINCIPAL -->
 					<div class="col-md-6">
 						<!-- HIT POINT -->
 						<div class="row">
-							<div class="col-md-3">
-								<p align="right">P.G.<br>Totales</p>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<input type="text" class="form-control editable" value="{{ $character->hit_points_total }}" id="hitPointsTotal" readonly>
+								<p class="no-space">P.G. Totales</p>
 							</div>
-							<div class="col-md-3">
-								<p align="right">P.G.<br>Actuales</p>
-							</div>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<input type="text" class="form-control editable" value="{{ $character->hit_points_present }}" id="hitPointsPresent" readonly>
+								<p class="no-space">P.G. Actuales</p>
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control editable baseAttackMod" value="{{ $character->base_attack }}" id="baseAttack" readonly>
+								<p class="no-space">Ataque Base</p>
 							</div>
 						</div>
 						<!-- END HIT POINT -->
+						<hr class="no-space">
 						<!-- INITIATIVE -->
 						<div class="row">
 							<div class="col-md-3">
-								<p align="right">Iniciativa</p>
+								<h4 align="right">Iniciativa</h4>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<input type="text" class="form-control" value="{{ $character->initiativeTotal() }}" id="initiativeTotal" readonly>
-								<p align="center">Total</p>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 class="no-space">=</h4>
 							</div>
 							<div class="col-md-3">
 								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
-								<p align="center">Modif Des</p>
+								<p class="no-space">Modif Des</p>
 							</div>
 							<div class="col-md-3">
 								<input type="text" class="form-control editable" value="{{ $character->initiative }}" id="initiative" readonly>
-								<p align="center">Modif Vario</p>
+								<p class="no-space">Modif Vario</p>
 							</div>
 						</div>
 						<!-- END INITIATIVE -->
+						<hr class="no-space">
 						<!-- ARMOR -->
+						<div class="row">
+							<div class="col-md-3">
+								<h4 align="right">CA Armadura</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control" value="{{ $character->armorTotal() }}" id="armorTotal" readonly>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
+							</div>
+							<div class="col-md-2">
+								<h4 align="center">+10</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control editable" value="{{ $character->armor_bonus }}" id="bonusArmor" readonly>
+								<p class="no-space">Bonif. Armad</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
+								<p class="no-space">Modif Des</p>
+							</div>
+						</div>
 						<!-- END ARMOR -->
+						<hr class="no-space">
+						<!-- BMC -->
+						<div class="row">
+							<div class="col-md-2">
+								<h4 align="right">BMC</h4>
+							</div>
+							<div class="col-md-3">
+								<input type="text" class="form-control" value="{{ $character->BMC() }}" id="bmc" readonly>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
+							</div>
+							<div class="col-md-3">
+								<input type="text" class="form-control baseAttackMod" value="{{ $character->base_attack }}" readonly>
+								<p class="no-space">Ataque Base</p>
+							</div>
+							<div class="col-md-3">
+								<input type="text" class="form-control strengthMod" value="{{ $character->modCharacter('strength') }}" readonly>
+								<p class="no-space">Modif Fue</p>
+							</div>
+						</div>
+						<!-- END BMC -->
+						<hr class="no-space">
+						<!-- DMC -->
+						<div class="row">
+							<div class="col-md-2">
+								<h4 align="right">DMC</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control" value="{{ $character->DMC() }}" id="dmc" readonly>
+								<p class="no-space">Total</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">=</h4>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control baseAttackMod" value="{{ $character->base_attack }}" readonly>
+								<p class="no-space">Ataque Base</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control strengthMod" value="{{ $character->modCharacter('strength') }}" readonly>
+								<p class="no-space">Modif Fue</p>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
+								<p class="no-space">Modif Des</p>
+							</div>
+							<div class="col-md-1">
+								<h4 align="center">+10</h4>
+							</div>
+						</div>
+						<!-- END DMC -->
 					</div>
 				</div>
 			</div>
@@ -402,9 +580,20 @@ Use App\Party;
 				"wisdomTemp"	: document.getElementById('wisdomTemp').value,
 				"charisma"		: document.getElementById('charisma').value,
 				"charismaTemp"	: document.getElementById('charismaTemp').value,
-				"hitPointsPresent"		: document.getElementById('hitPointsPresent').value,
+				"hitPointsPresent"	: document.getElementById('hitPointsPresent').value,
 				"hitPointsTotal"	: document.getElementById('hitPointsTotal').value,
 				"initiative"	: document.getElementById('initiative').value,
+				"bonusArmor"	: document.getElementById('bonusArmor').value,
+				"baseAttack"	: document.getElementById('baseAttack').value,
+				"fortitudeBase"		: document.getElementById('fortitudeBase').value,
+				"fortitudeModVar"	: document.getElementById('fortitudeModVar').value,
+				"fortitudeTemp"		: document.getElementById('fortitudeTemp').value,
+				"reflexBase"	: document.getElementById('reflexBase').value,
+				"reflexModVar"	: document.getElementById('reflexModVar').value,
+				"reflexTemp"	: document.getElementById('reflexTemp').value,
+				"willBase"		: document.getElementById('willBase').value,
+				"willModVar"	: document.getElementById('willModVar').value,
+				"willTemp"		: document.getElementById('willTemp').value,
 			},
 			beforeSend: function(){
 				console.log("La consulta ha salido");
@@ -421,6 +610,10 @@ Use App\Party;
 			writeStatsCharisma(data['charisma'], data['charismaMod'], data['charismaTemp']);
 			writeStatsHitPoints(data['hitPointsTotal'], data['hitPointsPresent']);
 			writeStatsInitiative(data['initiative'], data['initiativeTotal']);
+			writeStatsArmor(data['bonusArmor'], data['armorTotal'], data['baseAttack'], data['bmc'], data['dmc']);
+			writeStatsFortitude(data['fortitudeBase'], data['fortitudeModVar'], data['fortitudeTemp'], data['fortitudeTotal']);
+			writeStatsReflex(data['reflexBase'], data['reflexModVar'], data['reflexTemp'], data['reflexTotal']);
+			writeStatsWill(data['willBase'], data['willModVar'], data['willTemp'], data['willTotal']);
 		})
 		.fail(function(jqXHR, ajaxOptions, thrownError){
 			console.log("El servidor no responde...");
@@ -478,5 +671,34 @@ Use App\Party;
 	function writeStatsInitiative(initiative, initiativeTotal){
 		$('#initiative').val(initiative);
 		$('#initiativeTotal').val(initiativeTotal);
+	}
+
+	function writeStatsArmor(bonusArmor, armorTotal, baseAttack, bmc, dmc){
+		$('#bonusArmor').val(bonusArmor);
+		$('#armorTotal').val(armorTotal);
+		$('.baseAttackMod').val(baseAttack);
+		$('#bmc').val(bmc);
+		$('#dmc').val(dmc);
+	}
+
+	function writeStatsFortitude(fortitudeBase, fortitudeModVar, fortitudeTemp, fortitudeTotal){
+		$('#fortitudeBase').val(fortitudeBase);
+		$('#fortitudeModVar').val(fortitudeModVar);
+		$('#fortitudeTemp').val(fortitudeTemp);
+		$('#fortitudeTotal').val(fortitudeTotal);
+	}
+
+	function writeStatsReflex(reflexBase, reflexModVar, reflexTemp, reflexTotal){
+		$('#reflexBase').val(reflexBase);
+		$('#reflexModVar').val(reflexModVar);
+		$('#reflexTemp').val(reflexTemp);
+		$('#reflexTotal').val(reflexTotal);
+	}
+
+	function writeStatsWill(willBase, willModVar, willTemp, willTotal){
+		$('#willBase').val(willBase);
+		$('#willModVar').val(willModVar);
+		$('#willTemp').val(willTemp);
+		$('#willTotal').val(willTotal);
 	}
 </script>

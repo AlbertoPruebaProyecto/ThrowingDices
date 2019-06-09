@@ -45,8 +45,7 @@ class CreateCharactersTable extends Migration
             $table->integer('will_base');
             $table->integer('will_mod_var');
             $table->integer('will_temp');
-            $table->integer('bmc');
-            $table->integer('dmc');
+            $table->integer('base_attack');
             $table->integer('level_id')->unsigned();
             $table->integer('class_id')->unsigned();
             $table->integer('race_id')->unsigned();

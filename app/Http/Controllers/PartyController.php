@@ -99,6 +99,7 @@ class PartyController extends Controller
 			'charisma'			=>	$request->input('charisma') + $race->getSkillsStats('charisma'),
 			'hit_points_total'	=>	20,
 			'hit_points_present'=>	20,
+			'base_attack'		=>	2,
 			'party_id'			=>	$request->input('idParty'),
 			'level_id'			=>	Level::where('num', '=', 1)->first()->id,
 			'class_id'			=>	$classpj->id,
@@ -221,6 +222,21 @@ class PartyController extends Controller
 
 		$character->initiative = $request->input('initiative');
 
+		$character->armor_bonus = $request->input('bonusArmor');
+		$character->base_attack = $request->input('baseAttack');
+
+		$character->fortitude_base = $request->input('fortitudeBase');
+		$character->fortitude_mod_var = $request->input('fortitudeModVar');
+		$character->fortitude_temp = $request->input('fortitudeTemp');
+
+		$character->reflex_base = $request->input('reflexBase');
+		$character->reflex_mod_var = $request->input('reflexModVar');
+		$character->reflex_temp = $request->input('reflexTemp');
+
+		$character->will_base = $request->input('willBase');
+		$character->will_mod_var = $request->input('willModVar');
+		$character->will_temp = $request->input('willTemp');
+
 		$character->save();
 
 		$character->changeLevel();
@@ -261,6 +277,27 @@ class PartyController extends Controller
 
 			'initiative'		=>	$character->initiative,
 			'initiativeTotal'	=>	$character->initiativeTotal(),
+
+			'bonusArmor'	=>	$character->armor_bonus,
+			'armorTotal'	=>	$character->armorTotal(),
+			'baseAttack'	=>	$character->base_attack,
+			'bmc'			=>	$character->BMC(),
+			'dmc'			=>	$character->DMC(),
+
+			'fortitudeBase'		=>	$character->fortitude_base,
+			'fortitudeModVar'	=>	$character->fortitude_mod_var,
+			'fortitudeTemp'		=>	$character->fortitude_temp,
+			'fortitudeTotal'	=>	$character->fortitudeTotal(),
+
+			'reflexBase'		=>	$character->reflex_base,
+			'reflexModVar'	=>	$character->reflex_mod_var,
+			'reflexTemp'		=>	$character->reflex_temp,
+			'reflexTotal'	=>	$character->reflexTotal(),
+
+			'willBase'		=>	$character->will_base,
+			'willModVar'	=>	$character->will_mod_var,
+			'willTemp'		=>	$character->will_temp,
+			'willTotal'	=>	$character->willTotal(),
 		];
 
 		return response()->json($data);
