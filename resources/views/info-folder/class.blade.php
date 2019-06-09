@@ -107,7 +107,7 @@ $classSelected = Classpj::where('name', $className)->first();
 		<div class="widget no-glutter p-lg scroll-card">
 			<h3 class="widget-title text-primary"> {{ $element->name }} </h3>
 			<hr>
-			<span style="white-space: pre-line;">{{ $element->description }}</span>
+			<p align="justify">{!! $element->description !!}</p>
 		</div>
 	</div>
 	@endforeach

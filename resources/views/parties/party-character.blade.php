@@ -196,6 +196,11 @@ Use App\Party;
 						</a>
 					</li>
 					<li role="presentation">
+						<a href="#specialAptitude" aria-controls="specialAptitude" role="tab" data-toggle="tab">
+							Aptitudes especiales
+						</a>
+					</li>
+					<li role="presentation">
 						<a href="#spells" aria-controls="spells" role="tab" data-toggle="tab">
 							Hechizos
 						</a>
@@ -457,7 +462,7 @@ Use App\Party;
 						<hr class="no-space">
 						<!-- ARMOR -->
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<h4 align="right">CA Armadura</h4>
 							</div>
 							<div class="col-md-2">
@@ -468,15 +473,16 @@ Use App\Party;
 								<h4 align="center">=</h4>
 							</div>
 							<div class="col-md-2">
-								<h4 align="center">+10</h4>
-							</div>
-							<div class="col-md-2">
 								<input type="text" class="form-control editable" value="{{ $character->armor_bonus }}" id="bonusArmor" readonly>
 								<p class="no-space">Bonif. Armad</p>
 							</div>
 							<div class="col-md-2">
 								<input type="text" class="form-control skillMod" value="{{ $character->modCharacter('skill') }}" readonly>
 								<p class="no-space">Modif Des</p>
+							</div>
+
+							<div class="col-md-1">
+								<h4 align="center">+10</h4>
 							</div>
 						</div>
 						<!-- END ARMOR -->
@@ -573,6 +579,53 @@ Use App\Party;
 					</div>
 				</div>
 				<!-- END BODY TABS ABILITIES -->
+				<!-- BODY TABS SPECIAL APTITUDE -->
+				<div role="tabpanel" class="tab-pane fade" id="specialAptitude">
+					<!-- ACORDION LEARN -->
+					<div class="row">
+						@foreach ($character->specialAptitudes as $aptitude)
+						{{$aptitude->name}}
+						@endforeach
+					</div>
+					<!-- END ACORDION LEARN -->
+					<div class="row" align="right">
+						<button id=""class="btn mv-md btn-inverse" onclick="changeShowNoLearn()">
+							Mostrar todas las aptitudes
+						</button>
+					</div>
+					<!-- NO LEARN -->
+					<div class="row">
+						<div class="panel-group accordion" id="accordionNoLearn" role="tablist" aria-multiselectable="false"style="display: none;">
+							@foreach ($character->classpj->specialAptitudes as $aptitude)
+							<div class="panel panel-default">
+								<!-- HEAD -->
+								<div class="panel-heading" role="tab" id="heading-{{ $aptitude->id }}">
+									<a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordionNoLearn" href="#collapse-{{ $aptitude->id }}" aria-expanded="false" aria-controls="collapse-{{ $aptitude->id }}">
+										<h4 class="panel-title">{{ $aptitude->name }}</h4>
+										<i class="fa acc-switch"></i>
+									</a>
+								</div>
+								<!-- END HEAD -->
+								<!-- BODY -->
+								<div id="collapse-{{ $aptitude->id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ $aptitude->id }}">
+									<div class="panel-body">
+										<p align="justify">{!! $aptitude->description !!}</p>
+										<div class="row" align="center">
+											<button id="btnSP{{ $aptitude->id }}"class="btn mv-md btn-lg btn-inverse" onclick="learnSpecialAptitude({{ $character->id.' ,'.$aptitude->id }})" {{ $character->isLearnAptitude($aptitude->id)? 'disabled': '' }}>
+												<i class="glyphicon glyphicon-plus"></i>
+												Aprender
+											</button>
+										</div>
+									</div>
+								</div>
+								<!-- END BODY -->
+							</div>
+							@endforeach
+						</div>
+					</div>
+					<!-- END NO LEARN -->
+				</div>
+				<!-- END BODY TABS SPECIAL APTITUDE -->
 				<!-- BODY TABS SPELLS -->
 				<div role="tabpanel" class="tab-pane fade" id="spells">
 					hechizos
@@ -648,11 +701,11 @@ Use App\Party;
 				"willTemp"			: document.getElementById('willTemp').value,
 			},
 			beforeSend: function(){
-				console.log("La consulta ha salido");
+				console.log("La consulta loadData ha salido");
 			}
 		})
 		.success(function(data){
-			console.log("La consulta ha vuelto");
+			console.log("La consulta loadData ha vuelto");
 			writeDataHead(data);
 			writeStats(data);
 			writeAbilities(data);
@@ -749,13 +802,43 @@ Use App\Party;
 				'rankUp'	: rankUp,
 			},
 			beforeSend: function(){
-				console.log("La consulta ha salido");
+				console.log("La consulta loadAbility ha salido");
 			}
 		})
 		.success(function(data){
-			console.log("La consulta ha vuleto"+data['ability'].id);
+			console.log("La consulta loadAbility ha vuleto "+data['ability'].id);
 			$('#totalRank'+data['ability'].id).val(data['totalRank']);
 			$('#rank'+data['ability'].id).val(data['ability'].rank);
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function changeShowNoLearn(){
+		var div = document.getElementById("accordionNoLearn");
+		if (div.style.display === "none") {
+			div.style.display = "block";
+		} else {
+			div.style.display = "none";
+		}
+	}
+
+	function learnSpecialAptitude(idCharacter, idAptitude){
+		$.ajax({
+			url: "/learn-special-aptitude",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idAptitude'	: idAptitude,
+			},
+			beforeSend: function(){
+				console.log("La consulta learnSpecialAptitude ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta learnSpecialAptitude ha vuleto");
+			document.getElementById('btnSP'+data['idAptitude']).disabled = true;
 		})
 		.fail(function(jqXHR, ajaxOptions, thrownError){
 			console.log("El servidor no responde...");

@@ -39,7 +39,7 @@ use App\Spell;
 						@if (Spell::where('school', '=', $schoolSpell.'-level'.$level)->first()) <!-- for no show levels empty -->
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="heading-{{ $schoolSpell.$level }}">
-								<a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion-{{ $schoolSpell }}" href="#collapse-{{$schoolSpell.$level }}" aria-expanded="true" aria-controls="collapse-{{ $schoolSpell.$level }}">
+								<a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion-{{ $schoolSpell }}" href="#collapse-{{$schoolSpell.$level }}" aria-expanded="false" aria-controls="collapse-{{ $schoolSpell.$level }}">
 									<h4 class="panel-title"> @lang('spell.level'.$level) </h4>
 									<i class="fa acc-switch"></i>
 								</a>

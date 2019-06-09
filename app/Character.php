@@ -142,4 +142,13 @@ class Character extends Model
 	public function willTotal(){
 		return $this->will_base + $this->will_mod_var + $this->will_temp + $this->modCharacter('wisdom');
 	}
+
+	public function isLearnAptitude($idAptitude){
+		foreach ($this->specialAptitudes as $aptitud) {
+			if ($aptitud->id == $idAptitude) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

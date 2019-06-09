@@ -17,6 +17,7 @@ use App\Race;
 use App\Level;
 use App\Money;
 use App\Ability;
+use App\SpecialAptitude;
 
 class PartyController extends Controller
 {
@@ -318,5 +319,14 @@ class PartyController extends Controller
 		];
 
 		return response()->json($data);
+	}
+
+	public function learnSpecialAptitude(Request $request){
+		$character = Character::find($request->input('idCharacter'));
+		$specialAptitude = SpecialAptitude::find($request->input('idAptitude'));
+
+		$character->specialAptitudes()->attach($specialAptitude);
+
+		return response()->json(['idAptitude' => $request->input('idAptitude')]);
 	}
 }
