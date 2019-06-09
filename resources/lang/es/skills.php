@@ -35,5 +35,12 @@ return [
 	'climb'					=>	'Trepar',
 	'use_magic_object'		=>	'Usar Objeto Mágico',
 	'fly'					=>	'Volar',
+
+	'intelligence'	=>	'Inteligencia',
+	'skill'			=>	'Destreza',
+	'charisma'		=>	'Carisma',
+	'wisdom'		=>	'Sabiduría',
+	'constitution'	=>	'Constitución',
+	'strength'		=>	'Fuerza',
 ];
 ?>

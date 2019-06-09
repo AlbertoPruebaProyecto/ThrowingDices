@@ -18,7 +18,7 @@ class CreateAbilitiesTable extends Migration
             $table->boolean('special_class');
             $table->boolean('only_learn');
             $table->string('skill_base');
-            $table->integer('mod_var');
+            $table->integer('rank');
             $table->integer('character_id')->unsigned();
             $table->foreign('character_id')->references('id')->on('characters');
         });

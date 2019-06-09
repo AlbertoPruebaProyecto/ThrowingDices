@@ -190,13 +190,23 @@ Use App\Party;
 							Atributos
 						</a>
 					</li>
+					<li role="presentation">
+						<a href="#abilities" aria-controls="abilities" role="tab" data-toggle="tab">
+							Habilidades
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#spells" aria-controls="spells" role="tab" data-toggle="tab">
+							Hechizos
+						</a>
+					</li>
 				</ul>
 			</div>
 			<!-- END NAV TABS STATS -->
 			<!-- BODY TABS STATS -->
 			<div class="tab-content p-md">
+				<!-- STATS PRINCIPAL -->
 				<div role="tabpanel" class="tab-pane fade in active" id="pincipalStats">
-					<!-- STATS PRINCIPAL -->
 					<div class="col-md-6">
 						<div class="row">
 							<div>
@@ -525,8 +535,50 @@ Use App\Party;
 						<!-- END DMC -->
 					</div>
 				</div>
+				<!-- END BODY TABS STATS -->
+				<!-- BODY TABS ABILITIES -->
+				<div role="tabpanel" class="tab-pane fade" id="abilities">
+					@foreach ($character->abilities as $ability)
+					<div class="col-md-12">
+						<div class="col-md-1" align="right">
+							<i class="glyphicon glyphicon-{{ $ability->special_class? 'check': 'unchecked' }}"></i>
+						</div>
+						<div class="col-md-3">
+							<p>{{ trans('skills.'.$ability->name) }}</p>
+						</div>
+						<div class="col-md-2">
+							<input type="text" class="form-control" value="{{ $ability->totalRank() }}" id="totalRank{{ $ability->id }}" readonly>
+							<p class="no-space">Total</p>
+						</div>
+						<div class="col-md-1">
+							<h4 align="center">=</h4>
+						</div>
+						<div class="col-md-2">
+							<input type="text" class="form-control {{ $ability->skill_base }}Mod" value="{{ $character->modCharacter($ability->skill_base) }}" readonly>
+							<p class="no-space">{{ trans('skills.'.$ability->skill_base) }}</p>
+						</div>
+						<div class="col-md-2">
+							<input type="text" class="form-control" value="{{ $ability->rank }}" id="rank{{ $ability->id }}" readonly>
+							<p class="no-space">Rango</p>
+						</div>
+						<div class="col-md-1">
+							<button id=""class="btn mv-md btn-inverse" onclick="loadAbility({{ $ability->id }}, 'true')">
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+						</div>
+					</div>
+					@endforeach
+					<div class="col-md-12">
+						<p>Las habilidades con <i class="glyphicon glyphicon-check"></i> son especiales de clase, por lo que al aprenderlas la primera vez se sumarán puntos de rango automaticamente.</p>
+					</div>
+				</div>
+				<!-- END BODY TABS ABILITIES -->
+				<!-- BODY TABS SPELLS -->
+				<div role="tabpanel" class="tab-pane fade" id="spells">
+					hechizos
+				</div>
+				<!-- END BODY TABS SPELLS -->
 			</div>
-			<!-- END BODY TABS STATS -->
 		</div>
 		<!-- END STATS -->
 		<!-- CHAT -->
@@ -566,34 +618,34 @@ Use App\Party;
 			url: "/get-data-character",
 			type: "get",
 			data: {
-				"character_id" 	: document.getElementById('idCharacter').value,
-				"experience"	: document.getElementById('exp').value,
-				"strength"		: document.getElementById('strength').value,
-				"strengthTemp"	: document.getElementById('strengthTemp').value,
-				"skill"		: document.getElementById('skill').value,
-				"skillTemp"	: document.getElementById('skillTemp').value,
+				"character_id" 		: document.getElementById('idCharacter').value,
+				"experience"		: document.getElementById('exp').value,
+				"strength"			: document.getElementById('strength').value,
+				"strengthTemp"		: document.getElementById('strengthTemp').value,
+				"skill"				: document.getElementById('skill').value,
+				"skillTemp"			: document.getElementById('skillTemp').value,
 				"constitution"		: document.getElementById('constitution').value,
 				"constitutionTemp"	: document.getElementById('constitutionTemp').value,
 				"intelligence"		: document.getElementById('intelligence').value,
 				"intelligenceTemp"	: document.getElementById('intelligenceTemp').value,
-				"wisdom"		: document.getElementById('wisdom').value,
-				"wisdomTemp"	: document.getElementById('wisdomTemp').value,
-				"charisma"		: document.getElementById('charisma').value,
-				"charismaTemp"	: document.getElementById('charismaTemp').value,
+				"wisdom"			: document.getElementById('wisdom').value,
+				"wisdomTemp"		: document.getElementById('wisdomTemp').value,
+				"charisma"			: document.getElementById('charisma').value,
+				"charismaTemp"		: document.getElementById('charismaTemp').value,
 				"hitPointsPresent"	: document.getElementById('hitPointsPresent').value,
 				"hitPointsTotal"	: document.getElementById('hitPointsTotal').value,
-				"initiative"	: document.getElementById('initiative').value,
-				"bonusArmor"	: document.getElementById('bonusArmor').value,
-				"baseAttack"	: document.getElementById('baseAttack').value,
+				"initiative"		: document.getElementById('initiative').value,
+				"bonusArmor"		: document.getElementById('bonusArmor').value,
+				"baseAttack"		: document.getElementById('baseAttack').value,
 				"fortitudeBase"		: document.getElementById('fortitudeBase').value,
 				"fortitudeModVar"	: document.getElementById('fortitudeModVar').value,
 				"fortitudeTemp"		: document.getElementById('fortitudeTemp').value,
-				"reflexBase"	: document.getElementById('reflexBase').value,
-				"reflexModVar"	: document.getElementById('reflexModVar').value,
-				"reflexTemp"	: document.getElementById('reflexTemp').value,
-				"willBase"		: document.getElementById('willBase').value,
-				"willModVar"	: document.getElementById('willModVar').value,
-				"willTemp"		: document.getElementById('willTemp').value,
+				"reflexBase"		: document.getElementById('reflexBase').value,
+				"reflexModVar"		: document.getElementById('reflexModVar').value,
+				"reflexTemp"		: document.getElementById('reflexTemp').value,
+				"willBase"			: document.getElementById('willBase').value,
+				"willModVar"		: document.getElementById('willModVar').value,
+				"willTemp"			: document.getElementById('willTemp').value,
 			},
 			beforeSend: function(){
 				console.log("La consulta ha salido");
@@ -601,104 +653,112 @@ Use App\Party;
 		})
 		.success(function(data){
 			console.log("La consulta ha vuelto");
-			writeDataHead(data['level'], data['exp'], data['expLimit'], data['livePercentage']);
-			writeStatsStrength(data['strength'], data['strengthMod'], data['strengthTemp']);
-			writeStatsSkill(data['skill'], data['skillMod'], data['skillTemp']);
-			writeStatsConstitution(data['constitution'], data['constitutionMod'], data['constitutionTemp']);
-			writeStatsIntelligence(data['intelligence'], data['intelligenceMod'], data['intelligenceTemp']);
-			writeStatsWisdom(data['wisdom'], data['wisdomMod'], data['wisdomTemp']);
-			writeStatsCharisma(data['charisma'], data['charismaMod'], data['charismaTemp']);
-			writeStatsHitPoints(data['hitPointsTotal'], data['hitPointsPresent']);
-			writeStatsInitiative(data['initiative'], data['initiativeTotal']);
-			writeStatsArmor(data['bonusArmor'], data['armorTotal'], data['baseAttack'], data['bmc'], data['dmc']);
-			writeStatsFortitude(data['fortitudeBase'], data['fortitudeModVar'], data['fortitudeTemp'], data['fortitudeTotal']);
-			writeStatsReflex(data['reflexBase'], data['reflexModVar'], data['reflexTemp'], data['reflexTotal']);
-			writeStatsWill(data['willBase'], data['willModVar'], data['willTemp'], data['willTotal']);
+			writeDataHead(data);
+			writeStats(data);
+			writeAbilities(data);
 		})
 		.fail(function(jqXHR, ajaxOptions, thrownError){
 			console.log("El servidor no responde...");
 		});
 	}
 
-	function writeDataHead(level, exp, expLimit, livePercentage){
-		$('#level').val(level);
-		$('#exp').val(exp);
-		$('#expLimit').val(expLimit);
-		document.getElementById('progressBar').style.width= livePercentage + '%';
+	function writeDataHead(data){
+		$('#level').val(data['level']);
+		$('#exp').val(data['exp']);
+		$('#expLimit').val(data['expLimit']);
+		document.getElementById('progressBar').style.width= data['livePercentage'] + '%';
 	}
 
-	function writeStatsStrength(strength, strengthMod, strengthTemp){
-		$('#strength').val(strength);
-		$('.strengthMod').val(strengthMod);
-		$('#strengthTemp').val(strengthTemp);
+	function writeStats(data){
+		// Strength
+		$('#strength').val(data['strength']);
+		$('.strengthMod').val(data['strengthMod']);
+		$('#strengthTemp').val(data['strengthTemp']);
+		// Skill
+		$('#skill').val(data['skill']);
+		$('.skillMod').val(data['skillMod']);
+		$('#skillTemp').val(data['skillTemp']);
+		// Constitution
+		$('#constitution').val(data['constitution']);
+		$('.constitutionMod').val(data['constitutionMod']);
+		$('#constitutionTemp').val(data['constitutionTemp']);
+		// Intelligence
+		$('#intelligence').val(data['intelligence']);
+		$('.intelligenceMod').val(data['intelligenceMod']);
+		$('#intelligenceTemp').val(data['intelligenceTemp']);
+		// Wisdom
+		$('#wisdom').val(data['wisdom']);
+		$('.wisdomMod').val(data['wisdomMod']);
+		$('#wisdomTemp').val(data['wisdomTemp']);
+		// Charisma
+		$('#charisma').val(data['charisma']);
+		$('.charismaMod').val(data['charismaMod']);
+		$('#charismaTemp').val(data['charismaTemp']);
+		// HitPoints
+		$('#hitPointsTotal').val(data['hitPointsTotal']);
+		$('#hitPointsPresent').val(data['hitPointsPresent']);
+		// Initiative
+		$('#initiative').val(data['initiative']);
+		$('#initiativeTotal').val(data['initiativeTotal']);
+		// Armor
+		$('#bonusArmor').val(data['bonusArmor']);
+		$('#armorTotal').val(data['armorTotal']);
+		$('.baseAttackMod').val(data['baseAttack']);
+		$('#bmc').val(data['bmc']);
+		$('#dmc').val(data['dmc']);
+		// Fortitude
+		$('#fortitudeBase').val(data['fortitudeBase']);
+		$('#fortitudeModVar').val(data['fortitudeModVar']);
+		$('#fortitudeTemp').val(data['fortitudeTemp']);
+		$('#fortitudeTotal').val(data['fortitudeTotal']);
+		// Reflex
+		$('#reflexBase').val(data['reflexBase']);
+		$('#reflexModVar').val(data['reflexModVar']);
+		$('#reflexTemp').val(data['reflexTemp']);
+		$('#reflexTotal').val(data['reflexTotal']);
+		// Will
+		$('#willBase').val(data['willBase']);
+		$('#willModVar').val(data['willModVar']);
+		$('#willTemp').val(data['willTemp']);
+		$('#willTotal').val(data['willTotal']);
 	}
 
-	function writeStatsSkill(skill, skillMod, skillTemp){
-		$('#skill').val(skill);
-		$('.skillMod').val(skillMod);
-		$('#skillTemp').val(skillTemp);
+	function writeAbilities(data){
+		data['abilities'].forEach(function(ability){
+			//console.log(ability.id);
+			loadAbility(ability.id, 'false');
+			sleep(100);
+		});
 	}
 
-	function writeStatsConstitution(constitution, constitutionMod, constitutionTemp){
-		$('#constitution').val(constitution);
-		$('.constitutionMod').val(constitutionMod);
-		$('#constitutionTemp').val(constitutionTemp);
+	function sleep(milliseconds) {
+		var start = new Date().getTime();
+		for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds) {
+				break;
+			}
+		}
 	}
 
-	function writeStatsIntelligence(intelligence, intelligenceMod, intelligenceTemp){
-		$('#intelligence').val(intelligence);
-		$('.intelligenceMod').val(intelligenceMod);
-		$('#intelligenceTemp').val(intelligenceTemp);
-	}
-
-	function writeStatsWisdom(wisdom, wisdomMod, wisdomTemp){
-		$('#wisdom').val(wisdom);
-		$('.wisdomMod').val(wisdomMod);
-		$('#wisdomTemp').val(wisdomTemp);
-	}
-
-	function writeStatsCharisma(charisma, charismaMod, charismaTemp){
-		$('#charisma').val(charisma);
-		$('.charismaMod').val(charismaMod);
-		$('#charismaTemp').val(charismaTemp);
-	}
-
-	function writeStatsHitPoints(hitPointsTotal, hitPointsPresent){
-		$('#hitPointsTotal').val(hitPointsTotal);
-		$('#hitPointsPresent').val(hitPointsPresent);
-	}
-
-	function writeStatsInitiative(initiative, initiativeTotal){
-		$('#initiative').val(initiative);
-		$('#initiativeTotal').val(initiativeTotal);
-	}
-
-	function writeStatsArmor(bonusArmor, armorTotal, baseAttack, bmc, dmc){
-		$('#bonusArmor').val(bonusArmor);
-		$('#armorTotal').val(armorTotal);
-		$('.baseAttackMod').val(baseAttack);
-		$('#bmc').val(bmc);
-		$('#dmc').val(dmc);
-	}
-
-	function writeStatsFortitude(fortitudeBase, fortitudeModVar, fortitudeTemp, fortitudeTotal){
-		$('#fortitudeBase').val(fortitudeBase);
-		$('#fortitudeModVar').val(fortitudeModVar);
-		$('#fortitudeTemp').val(fortitudeTemp);
-		$('#fortitudeTotal').val(fortitudeTotal);
-	}
-
-	function writeStatsReflex(reflexBase, reflexModVar, reflexTemp, reflexTotal){
-		$('#reflexBase').val(reflexBase);
-		$('#reflexModVar').val(reflexModVar);
-		$('#reflexTemp').val(reflexTemp);
-		$('#reflexTotal').val(reflexTotal);
-	}
-
-	function writeStatsWill(willBase, willModVar, willTemp, willTotal){
-		$('#willBase').val(willBase);
-		$('#willModVar').val(willModVar);
-		$('#willTemp').val(willTemp);
-		$('#willTotal').val(willTotal);
+	function loadAbility(abilityId, rankUp){
+		$.ajax({
+			url: "/get-data-ability",
+			type: "get",
+			data: {
+				'abilityId'	: abilityId,
+				'rankUp'	: rankUp,
+			},
+			beforeSend: function(){
+				console.log("La consulta ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta ha vuleto"+data['ability'].id);
+			$('#totalRank'+data['ability'].id).val(data['totalRank']);
+			$('#rank'+data['ability'].id).val(data['ability'].rank);
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
 	}
 </script>

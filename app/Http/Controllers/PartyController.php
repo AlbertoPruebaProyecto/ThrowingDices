@@ -289,15 +289,32 @@ class PartyController extends Controller
 			'fortitudeTemp'		=>	$character->fortitude_temp,
 			'fortitudeTotal'	=>	$character->fortitudeTotal(),
 
-			'reflexBase'		=>	$character->reflex_base,
+			'reflexBase'	=>	$character->reflex_base,
 			'reflexModVar'	=>	$character->reflex_mod_var,
-			'reflexTemp'		=>	$character->reflex_temp,
+			'reflexTemp'	=>	$character->reflex_temp,
 			'reflexTotal'	=>	$character->reflexTotal(),
 
 			'willBase'		=>	$character->will_base,
 			'willModVar'	=>	$character->will_mod_var,
 			'willTemp'		=>	$character->will_temp,
-			'willTotal'	=>	$character->willTotal(),
+			'willTotal'		=>	$character->willTotal(),
+
+			'abilities'	=>	$character->abilities,
+		];
+
+		return response()->json($data);
+	}
+
+	public function getDataAbility(Request $request){
+		$ability = Ability::find($request->input('abilityId'));
+
+		if ($request->input('rankUp') == 'true') {
+			$ability->rankUp();
+		}
+
+		$data = [
+			'ability'	=>	$ability,
+			'totalRank'	=>	$ability->totalRank(),
 		];
 
 		return response()->json($data);
