@@ -151,4 +151,13 @@ class Character extends Model
 		}
 		return false;
 	}
+
+	public function isLearnSpell($idSpell){
+		foreach ($this->spells as $spell) {
+			if ($spell->id == $idSpell) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

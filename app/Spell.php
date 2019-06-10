@@ -16,4 +16,8 @@ class Spell extends Model
 	public function characters(){
 		return $this->belongsToMany('App\Character', 'characters_spells');
 	}
+
+	public function level(){
+		return explode('-', $this->school)[1];
+	}
 }

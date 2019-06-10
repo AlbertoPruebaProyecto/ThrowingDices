@@ -18,6 +18,7 @@ use App\Level;
 use App\Money;
 use App\Ability;
 use App\SpecialAptitude;
+use App\Spell;
 
 class PartyController extends Controller
 {
@@ -323,10 +324,29 @@ class PartyController extends Controller
 
 	public function learnSpecialAptitude(Request $request){
 		$character = Character::find($request->input('idCharacter'));
-		$specialAptitude = SpecialAptitude::find($request->input('idAptitude'));
+		$aptitude = SpecialAptitude::find($request->input('idAptitude'));
 
-		$character->specialAptitudes()->attach($specialAptitude);
+		$character->specialAptitudes()->attach($aptitude);
 
-		return response()->json(['idAptitude' => $request->input('idAptitude')]);
+		$data = [
+			'html'	=>	view('parties.contents.special-aptitude', compact('aptitude'))->render(),
+			'idAptitude' => $request->input('idAptitude'),
+		];
+
+		return response()->json($data);
+	}
+
+	public function learnSpell(Request $request){
+		$character = Character::find($request->input('idCharacter'));
+		$spell = Spell::find($request->input('idSpell'));
+
+		$character->spells()->attach($spell);
+
+		$data = [
+			'html'	=>	view('parties.contents.spell', compact('spell'))->render(),
+			'idSpell' => $request->input('idSpell'),
+		];
+
+		return response()->json($data);
 	}
 }

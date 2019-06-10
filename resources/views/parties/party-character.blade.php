@@ -1,5 +1,6 @@
 <?php
 Use App\Party;
+Use App\Spell;
 ?>
 
 @extends('baseLayout')
@@ -203,6 +204,11 @@ Use App\Party;
 					<li role="presentation">
 						<a href="#spells" aria-controls="spells" role="tab" data-toggle="tab">
 							Hechizos
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">
+							Equipo
 						</a>
 					</li>
 				</ul>
@@ -582,14 +588,18 @@ Use App\Party;
 				<!-- BODY TABS SPECIAL APTITUDE -->
 				<div role="tabpanel" class="tab-pane fade" id="specialAptitude">
 					<!-- ACORDION LEARN -->
-					<div class="row">
+					<div class="row" id="divSpecialAptitudeLearn">
 						@foreach ($character->specialAptitudes as $aptitude)
-						{{$aptitude->name}}
+						<div class="col-md-12">
+							<h4 class="panel-title text-primary">{{$aptitude->name}}</h4>
+							<p align="justify">{!! $aptitude->description !!}</p>
+							<hr>
+						</div>
 						@endforeach
 					</div>
 					<!-- END ACORDION LEARN -->
 					<div class="row" align="right">
-						<button id=""class="btn mv-md btn-inverse" onclick="changeShowNoLearn()">
+						<button id=""class="btn mv-md btn-inverse" onclick="changeShowDiv('accordionNoLearn')">
 							Mostrar todas las aptitudes
 						</button>
 					</div>
@@ -628,9 +638,64 @@ Use App\Party;
 				<!-- END BODY TABS SPECIAL APTITUDE -->
 				<!-- BODY TABS SPELLS -->
 				<div role="tabpanel" class="tab-pane fade" id="spells">
-					hechizos
+					<!-- SPELL LEARN -->
+					<div class="row" id="divSpellsLearn">
+						@foreach ($character->spells as $spell)
+						<div class="col-md-1" align="right">
+							<span class="label label-success">{{ trans('spell.'.$spell->level()) }}</span>
+						</div>
+						<div class="col-md-11">
+							<h4 class="panel-title text-primary">{{$spell->name}}</h4>
+						</div>
+						<div class="col-md-12">
+							<p>{{ $spell->description }}</p>
+							<hr>
+						</div>
+						@endforeach
+					</div>
+					<!-- END SPELL LEARN -->
+					<div class="row" align="right">
+						<button id=""class="btn mv-md btn-inverse" onclick="changeShowDiv('divNoLearn')">
+							Mostrar todos los hechizos de clase
+						</button>
+					</div>
+					<!-- SPELL NO LEARN -->
+					<div class="row" style="margin-top: 20px;">
+						<div id="divNoLearn"style="display: none;">
+							@foreach (Spell::where('school', 'LIKE', $character->classpj->name.'%')->get() as $spell)
+							<div class="col-md-12">
+								<div class="col-md-10">
+									<div class="col-md-1" align="right">
+										<span class="label label-success">{{ trans('spell.'.$spell->level()) }}</span>
+									</div>
+									<div class="col-md-11">
+										<h4 class="panel-title text-primary">{{$spell->name}}</h4>
+									</div>
+									<div class="col-md-12">
+										<p>{{ $spell->description }}</p>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<button id="btnSpell{{ $spell->id }}" class="btn mv-md btn-lg btn-inverse" onclick="learnSpell({{ $character->id.', '.$spell->id }})" {{ $character->isLearnSpell($spell->id)? 'disabled': '' }}>
+										<i class="glyphicon glyphicon-plus"></i>
+										Aprender
+									</button>
+								</div>
+								<div class="col-md-12">
+									<hr>
+								</div>
+							</div>
+							@endforeach
+						</div>
+					</div>
+					<!-- END SPELL NO LEARN -->
 				</div>
 				<!-- END BODY TABS SPELLS -->
+				<!-- BODY TABS EQUIPMENT -->
+				<div role="tabpanel" class="tab-pane fade" id="equipment">
+					Equipo
+				</div>
+				<!-- END BODY TABS EQUIPMENT -->
 			</div>
 		</div>
 		<!-- END STATS -->
@@ -815,8 +880,8 @@ Use App\Party;
 		});
 	}
 
-	function changeShowNoLearn(){
-		var div = document.getElementById("accordionNoLearn");
+	function changeShowDiv(nameDiv){
+		var div = document.getElementById(nameDiv);
 		if (div.style.display === "none") {
 			div.style.display = "block";
 		} else {
@@ -839,6 +904,29 @@ Use App\Party;
 		.success(function(data){
 			console.log("La consulta learnSpecialAptitude ha vuleto");
 			document.getElementById('btnSP'+data['idAptitude']).disabled = true;
+			$('#divSpecialAptitudeLearn').append(data['html'])
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function learnSpell(idCharacter, idSpell){
+		$.ajax({
+			url: "/learn-idSpell",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idSpell'		: idSpell,
+			},
+			beforeSend: function(){
+				console.log("La consulta learnSpell ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta learnSpell ha vuleto");
+			document.getElementById('btnSpell'+data['idSpell']).disabled = true;
+			$('#divSpellsLearn').append(data['html'])
 		})
 		.fail(function(jqXHR, ajaxOptions, thrownError){
 			console.log("El servidor no responde...");
