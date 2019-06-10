@@ -1,6 +1,7 @@
 <?php
 Use App\Party;
 Use App\Spell;
+Use App\Equipment;
 ?>
 
 @extends('baseLayout')
@@ -693,7 +694,128 @@ Use App\Spell;
 				<!-- END BODY TABS SPELLS -->
 				<!-- BODY TABS EQUIPMENT -->
 				<div role="tabpanel" class="tab-pane fade" id="equipment">
-					Equipo
+					<div class="row">
+						<div class="col-md-12 text-inline-character" align="right">
+							<h4 class="panel-title text-primary">Armas</h4>
+							<input type="checkbox" name="changeArmorWeapon" data-switchery onchange="changeArmorWeapon()">
+							<h4 class="panel-title text-primary">Armaduras</h4>
+						</div>
+					</div>
+					<!-- EQUIPMENT EQUIP -->
+					<div class="row">
+						<table class="table table-striped" id="divAddEquipment">
+							<tr>
+								<th> @lang('objects.name') </th>
+								<th class="trweapon"><center> @lang('objects.damage') </center></th>
+								<th class="trweapon"><center> @lang('objects.critical') </center></th>
+								<th class="trweapon"><center> @lang('objects.range') </center></th>
+								<th class="trarmor" style="display: none;"><center> @lang('objects.bonus-armor') </center></th>
+								<th class="trarmor" style="display: none;"><center> @lang('objects.penality') </center></th>
+								<th><center> @lang('objects.weight') </center></th>
+								<th><center>Adquirir</center></th>
+							</tr>
+							<div>
+								@foreach ($character->equipments as $equipment)
+								<tr class="tr{{ $equipment->getType() }}" style="display: {{ $equipment->isArmor()? 'none': '' }};" id="trEquip{{ $equipment->id }}">
+									<td>{{ $equipment->name }}</td>
+									@if ($equipment->isWeapon())
+									<td>
+										<center>{{ $equipment->damage }}</center>
+									</td>
+									<td>
+										<center>{{ $equipment->critical }}</center>
+									</td>
+									<td>
+										<center>{{ $equipment->range == 0? '-': $equipment->range.' m' }}</center>
+									</td>
+									@else
+									<td>
+										<center>{{ $equipment->bonus_armor }}</center>
+									</td>
+									<td>
+										<center>{{ $equipment->penality }}</center>
+									</td>
+									@endif
+									<td>
+										<center>{{ $equipment->weight.' kg' }}</center>
+									</td>
+									<td>
+										<center>
+											<button class="btn mv-md btn-inverse" onclick="deleteEquipment({{ $character->id.', '.$equipment->id }})">
+												<i class="glyphicon glyphicon-trash"></i>
+												Eliminar
+											</button>
+										</center>
+									</td>
+								</tr>
+								@endforeach
+							</div>
+						</table>
+					</div>
+					<!-- END EQUIPMENT EQUIP -->
+					<div class="row">
+						<div class="row" align="center" style="margin-top: 60px; margin-bottom:20px;">
+							<h4 class="panel-title text-primary">Ver todos los objetos disponibles</h4>
+						</div>
+					</div>
+					<!-- EQUIPMENT NO EQUIP -->
+					<div class="row" id="tableNoEquip">
+						<table class="table table-striped">
+							<tr>
+								<th> @lang('objects.name') </th>
+								<th><center> @lang('objects.cost') </center></th>
+								<th class="trweapon"><center> @lang('objects.damage') </center></th>
+								<th class="trweapon"><center> @lang('objects.critical') </center></th>
+								<th class="trweapon"><center> @lang('objects.range') </center></th>
+								<th class="trarmor" style="display: none;"><center> @lang('objects.bonus-armor') </center></th>
+								<th class="trarmor" style="display: none;"><center> @lang('objects.penality') </center></th>
+								<th><center> @lang('objects.weight') </center></th>
+								<th><center>Adquirir</center></th>
+							</tr>
+							@foreach (Equipment::get() as $equipment)
+							<tr class="tr{{ $equipment->getType() }}" style="display: {{ $equipment->isArmor()? 'none': '' }};">
+								<td>{{ $equipment->name }}</td>
+								<td>
+									<center>
+										<img class="icon-money" src="/assets/images/gold.png">{{ $equipment->money->gold }}&nbsp;&nbsp;
+										<img class="icon-money" src="/assets/images/silver.png">{{ $equipment->money->silver }}&nbsp;&nbsp;
+										<img class="icon-money" src="/assets/images/copper.png">{{ $equipment->money->copper }}
+									</center>
+								</td>
+								@if ($equipment->isWeapon())
+								<td>
+									<center>{{ $equipment->damage }}</center>
+								</td>
+								<td>
+									<center>{{ $equipment->critical }}</center>
+								</td>
+								<td>
+									<center>{{ $equipment->range == 0? '-': $equipment->range.' m' }}</center>
+								</td>
+								@else
+								<td>
+									<center>{{ $equipment->bonus_armor }}</center>
+								</td>
+								<td>
+									<center>{{ $equipment->penality }}</center>
+								</td>
+								@endif
+								<td>
+									<center>{{ $equipment->weight.' kg' }}</center>
+								</td>
+								<td>
+									<center>
+										<button id="btnNoEquip{{ $equipment->id }}" class="btn mv-md btn-inverse" onclick="addEquipment({{ $character->id.', '.$equipment->id }})" {{ $character->isAddEquipment($equipment->id)? 'disabled': '' }}>
+											<i class="glyphicon glyphicon-plus"></i>
+											Adquirir
+										</button>
+									</center>
+								</td>
+							</tr>
+							@endforeach
+						</table>
+					</div>
+					<!-- END EQUIPMENT NO EQUIP -->
 				</div>
 				<!-- END BODY TABS EQUIPMENT -->
 			</div>
@@ -780,6 +902,116 @@ Use App\Spell;
 		});
 	}
 
+	function loadAbility(abilityId, rankUp){
+		$.ajax({
+			url: "/get-data-ability",
+			type: "get",
+			data: {
+				'abilityId'	: abilityId,
+				'rankUp'	: rankUp,
+			},
+			beforeSend: function(){
+				console.log("La consulta loadAbility ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta loadAbility ha vuleto "+data['ability'].id);
+			$('#totalRank'+data['ability'].id).val(data['totalRank']);
+			$('#rank'+data['ability'].id).val(data['ability'].rank);
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function learnSpecialAptitude(idCharacter, idAptitude){
+		$.ajax({
+			url: "/learn-special-aptitude",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idAptitude'	: idAptitude,
+			},
+			beforeSend: function(){
+				console.log("La consulta learnSpecialAptitude ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta learnSpecialAptitude ha vuleto");
+			document.getElementById('btnSP'+data['idAptitude']).disabled = true;
+			$('#divSpecialAptitudeLearn').append(data['html'])
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function learnSpell(idCharacter, idSpell){
+		$.ajax({
+			url: "/learn-spell",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idSpell'		: idSpell,
+			},
+			beforeSend: function(){
+				console.log("La consulta learnSpell ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta learnSpell ha vuleto");
+			document.getElementById('btnSpell'+data['idSpell']).disabled = true;
+			$('#divSpellsLearn').append(data['html'])
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function addEquipment(idCharacter, idEquipment){
+		$.ajax({
+			url: "/add-equipment",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idEquipment'	: idEquipment,
+			},
+			beforeSend: function(){
+				console.log("La consulta addEquipment ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta addEquipment ha vuleto");
+			$('#divAddEquipment').append(data['html']);
+			document.getElementById('btnNoEquip'+data['idEquipment']).disabled = true;
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function deleteEquipment(idCharacter, idEquipment){
+		$.ajax({
+			url: "/delete-equipment",
+			type: "get",
+			data: {
+				'idCharacter'	: idCharacter,
+				'idEquipment'	: idEquipment,
+			},
+			beforeSend: function(){
+				console.log("La consulta deleteEquipment ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta deleteEquipment ha vuleto");
+			$('#trEquip'+data['idEquipment']).remove();
+			document.getElementById('btnNoEquip'+data['idEquipment']).disabled = false;
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
 	function writeDataHead(data){
 		$('#level').val(data['level']);
 		$('#exp').val(data['exp']);
@@ -843,7 +1075,6 @@ Use App\Spell;
 
 	function writeAbilities(data){
 		data['abilities'].forEach(function(ability){
-			//console.log(ability.id);
 			loadAbility(ability.id, 'false');
 			sleep(100);
 		});
@@ -858,78 +1089,27 @@ Use App\Spell;
 		}
 	}
 
-	function loadAbility(abilityId, rankUp){
-		$.ajax({
-			url: "/get-data-ability",
-			type: "get",
-			data: {
-				'abilityId'	: abilityId,
-				'rankUp'	: rankUp,
-			},
-			beforeSend: function(){
-				console.log("La consulta loadAbility ha salido");
-			}
-		})
-		.success(function(data){
-			console.log("La consulta loadAbility ha vuleto "+data['ability'].id);
-			$('#totalRank'+data['ability'].id).val(data['totalRank']);
-			$('#rank'+data['ability'].id).val(data['ability'].rank);
-		})
-		.fail(function(jqXHR, ajaxOptions, thrownError){
-			console.log("El servidor no responde...");
-		});
-	}
-
 	function changeShowDiv(nameDiv){
-		var div = document.getElementById(nameDiv);
-		if (div.style.display === "none") {
-			div.style.display = "block";
-		} else {
-			div.style.display = "none";
+		if($('#'+nameDiv).is(':hidden')){
+			$('#'+nameDiv).show()
+		}else{
+			$('#'+nameDiv).hide()
 		}
 	}
 
-	function learnSpecialAptitude(idCharacter, idAptitude){
-		$.ajax({
-			url: "/learn-special-aptitude",
-			type: "get",
-			data: {
-				'idCharacter'	: idCharacter,
-				'idAptitude'	: idAptitude,
-			},
-			beforeSend: function(){
-				console.log("La consulta learnSpecialAptitude ha salido");
-			}
-		})
-		.success(function(data){
-			console.log("La consulta learnSpecialAptitude ha vuleto");
-			document.getElementById('btnSP'+data['idAptitude']).disabled = true;
-			$('#divSpecialAptitudeLearn').append(data['html'])
-		})
-		.fail(function(jqXHR, ajaxOptions, thrownError){
-			console.log("El servidor no responde...");
-		});
+	function changeArmorWeapon(){
+		if($('.trweapon').is(':hidden')){
+			$('.trweapon').show()
+		}else{
+			$('.trweapon').hide()
+		}
+
+		if($('.trarmor').is(':hidden')){
+			$('.trarmor').show()
+		}else{
+			$('.trarmor').hide()
+		}
 	}
 
-	function learnSpell(idCharacter, idSpell){
-		$.ajax({
-			url: "/learn-idSpell",
-			type: "get",
-			data: {
-				'idCharacter'	: idCharacter,
-				'idSpell'		: idSpell,
-			},
-			beforeSend: function(){
-				console.log("La consulta learnSpell ha salido");
-			}
-		})
-		.success(function(data){
-			console.log("La consulta learnSpell ha vuleto");
-			document.getElementById('btnSpell'+data['idSpell']).disabled = true;
-			$('#divSpellsLearn').append(data['html'])
-		})
-		.fail(function(jqXHR, ajaxOptions, thrownError){
-			console.log("El servidor no responde...");
-		});
-	}
+
 </script>

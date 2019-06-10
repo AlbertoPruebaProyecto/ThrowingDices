@@ -160,4 +160,13 @@ class Character extends Model
 		}
 		return false;
 	}
+
+	public function isAddEquipment($idEquipment){
+		foreach ($this->equipments as $equipment) {
+			if ($equipment->id == $idEquipment) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

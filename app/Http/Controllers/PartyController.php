@@ -19,6 +19,7 @@ use App\Money;
 use App\Ability;
 use App\SpecialAptitude;
 use App\Spell;
+use App\Equipment;
 
 class PartyController extends Controller
 {
@@ -345,6 +346,33 @@ class PartyController extends Controller
 		$data = [
 			'html'	=>	view('parties.contents.spell', compact('spell'))->render(),
 			'idSpell' => $request->input('idSpell'),
+		];
+
+		return response()->json($data);
+	}
+
+	public function addEquipment(Request $request){
+		$character = Character::find($request->input('idCharacter'));
+		$equipment = Equipment::find($request->input('idEquipment'));
+
+		$character->equipments()->attach($equipment);
+
+		$data = [
+			'html'			=>	view('parties.contents.table-equipment', compact('equipment', 'character'))->render(),
+			'idEquipment' 	=> $request->input('idEquipment'),
+		];
+
+		return response()->json($data);
+	}
+
+	public function deleteEquipment(Request $request){
+		$character = Character::find($request->input('idCharacter'));
+		$equipment = Equipment::find($request->input('idEquipment'));
+
+		$character->equipments()->detach($equipment);
+
+		$data = [
+			'idEquipment' => $request->input('idEquipment'),
 		];
 
 		return response()->json($data);

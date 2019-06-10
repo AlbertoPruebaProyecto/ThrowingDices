@@ -63,7 +63,9 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('get-data-character', 'PartyController@getDataCharacter');
 	Route::get('get-data-ability', 'PartyController@getDataAbility');
 	Route::get('learn-special-aptitude', 'PartyController@learnSpecialAptitude');
-	Route::get('learn-idSpell', 'PartyController@learnSpell');
+	Route::get('learn-spell', 'PartyController@learnSpell');
+	Route::get('add-equipment', 'PartyController@addEquipment');
+	Route::get('delete-equipment', 'PartyController@deleteEquipment');
 
 	Route::post('form-new-party', 'PartyController@create');
 	Route::post('form-new-character', 'PartyController@createCharacter');

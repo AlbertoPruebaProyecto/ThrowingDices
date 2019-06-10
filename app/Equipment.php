@@ -28,4 +28,16 @@ class Equipment extends Model
 	public function getSubType(){
 		return explode(';', $this->type)[1];
 	}
+
+	public function getType(){
+		return explode(';', $this->type)[0];
+	}
+
+	public function isArmor(){
+		return $this->getType() == 'armor';
+	}
+
+	public function isWeapon(){
+		return $this->getType() == 'weapon';
+	}
 }
