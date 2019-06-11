@@ -78,6 +78,11 @@ div.scroll-card{
 	overflow-y: scroll;
 }
 
+div.scroll-chat{
+	height: 380px;
+	overflow-y: scroll;
+}
+
 div.text-inline{
 	margin-bottom: 10px;
 }

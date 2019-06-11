@@ -21,6 +21,10 @@ class Party extends Model
 		return $this->hasMany('App\Character');
 	}
 
+	public function chats(){
+		return $this->hasMany('App\Chat');
+	}
+
 	public function getCharacter($userId){
 		foreach ($this->characters as $character) {
 			if ($character->user->id == $userId) {

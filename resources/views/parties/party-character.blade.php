@@ -23,7 +23,6 @@ Use App\Equipment;
 		<div class="col-md-1">
 			<center>
 				<img src="{{ Config::get('app.url_image_race').'/'.$character->race->name.'.png' }}">
-				<!--button id="btnActualiza"class="btn mv-md btn-inverse">actualizar</button-->
 				<input type="checkbox" name="changeData" data-switchery onchange="activeInputs()">
 			</center>
 		</div>
@@ -821,11 +820,61 @@ Use App\Equipment;
 			</div>
 		</div>
 		<!-- END STATS -->
-		<!-- CHAT -->
-		<div class="col-md-5">
-
+		<!-- DICES & CHAT -->
+		<div class="col-md-5" style="padding: 40px;">
+			<!-- DICES -->
+			<div class="row" align="center" style="padding: 20px;">
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D4
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D6
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D8
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D10
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D12
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D20
+				</button>
+				<button id="btn" class="btn mv-md btn-inverse" onclick="">
+					D100
+				</button>
+			</div>
+			<!-- END DICES -->
+			<!-- CHAT -->
+			<div class="row">
+				<div class="list-group">
+					<a class="list-group-item active">
+						<h4 class="list-group-item-heading" align="center">Chat de la partida</h4>
+					</a>
+					<!-- BODY CHAT -->
+					<div id="chatContent" class=" scroll-chat">
+					</div>
+					<!-- END BODY CHAT -->
+				</div>
+				<!-- CHAT SEND -->
+				<div>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="inputChat" onkeyup="onKeyUp(event)">
+					</div>
+					<div class="col-md-2">
+						<button id="btnSendChat" class="btn mv-md btn-inverse" onclick="pushSendData()">
+							<i class="glyphicon glyphicon-send"></i>
+							Enviar
+						</button>
+					</div>
+				</div>
+				<!-- END CHAT SEND -->
+			</div>
+			<!-- END CHAT -->
 		</div>
-		<!-- END CHAT -->
+		<!-- END DICES & CHAT -->
 	</div>
 	<!-- END BODY -->
 </div>
@@ -837,10 +886,23 @@ Use App\Equipment;
 	var isChange = false;
 
 	$(document).ready(function(){
-		$('#btnActualiza').click(function(){
-			loadData();
-		});
+		//$('#btnSendChat').click(function(){
+			//$('#inputChat').val('');
+		//});
 	});
+
+	function pushSendData(){
+		//alert($('#inputChat').val());
+		sendMessage($('#inputChat').val());
+		$('#inputChat').val('');
+	}
+
+	function onKeyUp(event) {
+		var keycode = event.keyCode;
+		if(keycode == '13'){
+			pushSendData();
+		}
+	}
 
 	function activeInputs(){
 		if(isChange){
@@ -851,6 +913,27 @@ Use App\Equipment;
 			$('.editable').prop('readonly', isChange);
 			isChange = true;
 		}
+	}
+
+	function sendMessage(message){
+		$.ajax({
+			url: "/send-message",
+			type: "get",
+			data: {
+				"idCharacter" 	: document.getElementById('idCharacter').value,
+				"message"		: message,
+			},
+			beforeSend: function(){
+				console.log("La consulta sendMessage ha salido");
+			}
+		})
+		.success(function(data){
+			console.log("La consulta sendMessage ha vuleto");
+			$('#chatContent').append(data['html'])
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
 	}
 
 	function loadData(){
@@ -1110,6 +1193,4 @@ Use App\Equipment;
 			$('.trarmor').hide()
 		}
 	}
-
-
 </script>
