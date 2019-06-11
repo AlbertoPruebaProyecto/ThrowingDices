@@ -16,9 +16,6 @@ use App\Classpj;
 use App\Race;
 use App\Level;
 use App\Money;
-use App\Ability;
-use App\SpecialAptitude;
-use App\Spell;
 
 class PartyController extends Controller
 {
@@ -302,49 +299,6 @@ class PartyController extends Controller
 			'willTotal'		=>	$character->willTotal(),
 
 			'abilities'	=>	$character->abilities,
-		];
-
-		return response()->json($data);
-	}
-
-	public function getDataAbility(Request $request){
-		$ability = Ability::find($request->input('abilityId'));
-
-		if ($request->input('rankUp') == 'true') {
-			$ability->rankUp();
-		}
-
-		$data = [
-			'ability'	=>	$ability,
-			'totalRank'	=>	$ability->totalRank(),
-		];
-
-		return response()->json($data);
-	}
-
-	public function learnSpecialAptitude(Request $request){
-		$character = Character::find($request->input('idCharacter'));
-		$aptitude = SpecialAptitude::find($request->input('idAptitude'));
-
-		$character->specialAptitudes()->attach($aptitude);
-
-		$data = [
-			'html'	=>	view('parties.contents.special-aptitude', compact('aptitude'))->render(),
-			'idAptitude' => $request->input('idAptitude'),
-		];
-
-		return response()->json($data);
-	}
-
-	public function learnSpell(Request $request){
-		$character = Character::find($request->input('idCharacter'));
-		$spell = Spell::find($request->input('idSpell'));
-
-		$character->spells()->attach($spell);
-
-		$data = [
-			'html'	=>	view('parties.contents.spell', compact('spell'))->render(),
-			'idSpell' => $request->input('idSpell'),
 		];
 
 		return response()->json($data);
