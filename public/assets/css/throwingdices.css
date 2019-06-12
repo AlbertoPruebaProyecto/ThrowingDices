@@ -92,6 +92,11 @@ div.scroll-chat{
 	overflow-y: scroll;
 }
 
+div.scroll-chat-master{
+	height: 700px;
+	overflow-y: scroll;
+}
+
 div.text-inline{
 	margin-bottom: 10px;
 }

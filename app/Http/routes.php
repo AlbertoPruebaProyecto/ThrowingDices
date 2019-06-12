@@ -66,8 +66,12 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('learn-spell', 'SpellController@learnSpell');
 	Route::get('add-equipment', 'EquipmentController@addEquipment');
 	Route::get('delete-equipment', 'EquipmentController@deleteEquipment');
+
 	Route::get('send-message', 'ChatController@sendMessage');
 	Route::get('old-messages', 'ChatController@paginateOldMessages');
+
+	Route::get('send-message-master', 'ChatController@sendMessageMaster');
+	Route::get('old-messages-master', 'ChatController@paginateOldMessagesMaster');
 
 	Route::post('form-new-party', 'PartyController@create');
 	Route::post('form-new-character', 'PartyController@createCharacter');

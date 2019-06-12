@@ -191,7 +191,7 @@ class PartyController extends Controller
 			return redirect::back()->withErrors('Todos los jugadores aún no se han creado');
 		}
 
-		return 'eres master';
+		return view('parties.party-master')->with('party', $party);
 	}
 
 	public function getDataCharacter(Request $request){

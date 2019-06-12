@@ -691,7 +691,7 @@ Use App\Equipment;
 					<!-- SPELL NO LEARN -->
 					<div class="row" style="margin-top: 20px;">
 						<div id="divNoLearn"style="display: none;">
-							@foreach (Spell::where('school', 'LIKE', $character->classpj->name.'%')->get() as $spell)
+							@forelse (Spell::where('school', 'LIKE', $character->classpj->name.'%')->get() as $spell)
 							<div class="col-md-12">
 								<div class="col-md-10">
 									<div class="col-md-1" align="right">
@@ -714,7 +714,11 @@ Use App\Equipment;
 									<hr>
 								</div>
 							</div>
-							@endforeach
+							@empty
+							<div class="col-md-12">
+								<h4 class="panel-title text-primary">Esta clase no dispone de hechizos</h4>
+							</div>
+							@endforelse
 						</div>
 					</div>
 					<!-- END SPELL NO LEARN -->
