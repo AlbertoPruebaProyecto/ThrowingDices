@@ -18,4 +18,8 @@ class Chat extends Model
 	public function party(){
 		return $this->belongsTo('App\Party');
 	}
+
+	public function isMy(){
+		return $this->character_id->id == Auth::id();
+	}
 }

@@ -16,6 +16,7 @@ use App\Classpj;
 use App\Race;
 use App\Level;
 use App\Money;
+use App\Ability;
 
 class PartyController extends Controller
 {
@@ -236,6 +237,11 @@ class PartyController extends Controller
 		$character->will_mod_var = $request->input('willModVar');
 		$character->will_temp = $request->input('willTemp');
 
+		$character->money->gold = $request->input('moneyGold');
+		$character->money->silver = $request->input('moneySilver');
+		$character->money->copper = $request->input('moneyCopper');
+		$character->money->save();
+
 		$character->save();
 
 		$character->changeLevel();
@@ -297,6 +303,10 @@ class PartyController extends Controller
 			'willModVar'	=>	$character->will_mod_var,
 			'willTemp'		=>	$character->will_temp,
 			'willTotal'		=>	$character->willTotal(),
+
+			'moneyGold'		=>	$character->money->gold,
+			'moneySilver'	=>	$character->money->silver,
+			'moneyCopper'	=>	$character->money->copper,
 
 			'abilities'	=>	$character->abilities,
 		];

@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('add-equipment', 'EquipmentController@addEquipment');
 	Route::get('delete-equipment', 'EquipmentController@deleteEquipment');
 	Route::get('send-message', 'ChatController@sendMessage');
+	Route::get('old-messages', 'ChatController@paginateOldMessages');
 
 	Route::post('form-new-party', 'PartyController@create');
 	Route::post('form-new-character', 'PartyController@createCharacter');

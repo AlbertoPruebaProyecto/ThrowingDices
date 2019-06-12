@@ -545,6 +545,35 @@ Use App\Equipment;
 							</div>
 						</div>
 						<!-- END DMC -->
+						<hr class="no-space">
+						<!-- MONEY -->
+						<div class="row">
+							<div class="col-md-4">
+								<div class="col-md-4">
+									<img class="icon-money-character" src="/assets/images/gold.png">
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control editable" value="{{ $character->money->gold }}" id="moneyGold" readonly>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="col-md-4">
+									<img class="icon-money-character" src="/assets/images/silver.png">
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control editable" value="{{ $character->money->silver }}" id="moneySilver" readonly>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="col-md-4">
+									<img class="icon-money-character" src="/assets/images/copper.png">
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control editable" value="{{ $character->money->copper }}" id="moneyCopper" readonly>
+								</div>
+							</div>
+						</div>
+						<!-- END MONEY -->
 					</div>
 				</div>
 				<!-- END BODY TABS STATS -->
@@ -821,40 +850,60 @@ Use App\Equipment;
 		</div>
 		<!-- END STATS -->
 		<!-- DICES & CHAT -->
-		<div class="col-md-5" style="padding: 40px;">
+		<div class="col-md-5" style="padding: 15px;">
 			<!-- DICES -->
-			<div class="row" align="center" style="padding: 20px;">
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D4
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D6
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D8
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D10
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D12
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D20
-				</button>
-				<button id="btn" class="btn mv-md btn-inverse" onclick="">
-					D100
-				</button>
+			<div class="col-sm-3" align="center">
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(4)">
+						D4
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(6)">
+						D6
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(8)">
+						D8
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(10)">
+						D10
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(12)">
+						D12
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(20)">
+						D20
+					</button>
+				</div>
+				<div style="padding: 10px;">
+					<button id="btn" class="btn mv-md btn-inverse" onclick="throwingDice(100)">
+						D100
+					</button>
+				</div>
 			</div>
 			<!-- END DICES -->
 			<!-- CHAT -->
-			<div class="row">
+			<input type="hidden" id="idFirstChatReadSesion" value="{{ $character->last_chat_read }}">
+			<div class="col-sm-9">
 				<div class="list-group">
 					<a class="list-group-item active">
 						<h4 class="list-group-item-heading" align="center">Chat de la partida</h4>
 					</a>
 					<!-- BODY CHAT -->
-					<div id="chatContent" class=" scroll-chat">
+					<div id="divScroll" class="scroll-chat" align="center">
+						<button id="btnOldMessages" class="btn mv-md btn-inverse" onclick="paginateOldMessages()" style="margin: 20px;">
+							<i class="glyphicon glyphicon-send"></i>
+							Cargar más antigüos
+						</button>
+						<div id="chatContent"></div>
 					</div>
 					<!-- END BODY CHAT -->
 				</div>
@@ -884,17 +933,20 @@ Use App\Equipment;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	var isChange = false;
+	var page = 1;
 
 	$(document).ready(function(){
-		//$('#btnSendChat').click(function(){
-			//$('#inputChat').val('');
-		//});
+		function updateChat(){
+			sendMessage();
+		}
+		sendMessage();
+		setInterval(updateChat, 2000);
 	});
 
 	function pushSendData(){
-		//alert($('#inputChat').val());
 		sendMessage($('#inputChat').val());
 		$('#inputChat').val('');
+		$("#divScroll").animate({ scrollTop: $('#divScroll').prop("scrollHeight")}, 1000);
 	}
 
 	function onKeyUp(event) {
@@ -902,6 +954,12 @@ Use App\Equipment;
 		if(keycode == '13'){
 			pushSendData();
 		}
+	}
+
+	function throwingDice(dice){
+		var message = 'D'  + dice + ' => ' + (Math.floor(Math.random() * (dice - 1) + 1)) + '';
+		sendMessage(message, true);
+		$("#divScroll").animate({ scrollTop: $('#divScroll').prop("scrollHeight")}, 1000);
 	}
 
 	function activeInputs(){
@@ -915,21 +973,49 @@ Use App\Equipment;
 		}
 	}
 
-	function sendMessage(message){
+	function paginateOldMessages(){
+		$.ajax({
+			url: "/old-messages?page=" + page,
+			type: "get",
+			data: {
+				"idCharacter" 		: document.getElementById('idCharacter').value,
+				"firstOldMessage" : $('#idFirstChatReadSesion').val(),
+			},
+			beforeSend: function(){
+				page++;
+			}
+		})
+		.done(function(data){
+			if (data['html'] == ''){
+				$('#btnOldMessages').hide();
+			}
+			$('#chatContent').prepend(data['html']);
+			$('#divScroll').scrollTop($('#divScroll').scrollTop() + 1370)
+
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError){
+			console.log("El servidor no responde...");
+		});
+	}
+
+	function sendMessage(message, isThrow){
 		$.ajax({
 			url: "/send-message",
 			type: "get",
 			data: {
 				"idCharacter" 	: document.getElementById('idCharacter').value,
 				"message"		: message,
+				'isThrow'		: isThrow,
 			},
 			beforeSend: function(){
 				console.log("La consulta sendMessage ha salido");
 			}
 		})
 		.success(function(data){
-			console.log("La consulta sendMessage ha vuleto");
-			$('#chatContent').append(data['html'])
+			console.log("La consulta sendMessage ha vuelto");
+			if (data['html'] != ''){
+				$('#chatContent').append(data['html']);
+			}
 		})
 		.fail(function(jqXHR, ajaxOptions, thrownError){
 			console.log("El servidor no responde...");
@@ -969,6 +1055,9 @@ Use App\Equipment;
 				"willBase"			: document.getElementById('willBase').value,
 				"willModVar"		: document.getElementById('willModVar').value,
 				"willTemp"			: document.getElementById('willTemp').value,
+				"moneyGold"			: document.getElementById('moneyGold').value,
+				"moneySilver"		: document.getElementById('moneySilver').value,
+				"moneyCopper"		: document.getElementById('moneyCopper').value,
 			},
 			beforeSend: function(){
 				console.log("La consulta loadData ha salido");
@@ -1154,6 +1243,10 @@ Use App\Equipment;
 		$('#willModVar').val(data['willModVar']);
 		$('#willTemp').val(data['willTemp']);
 		$('#willTotal').val(data['willTotal']);
+		// Money
+		$('#moneyGold').val(data['moneyGold']);
+		$('#moneySilver').val(data['moneySilver']);
+		$('#moneyCopper').val(data['moneyCopper']);
 	}
 
 	function writeAbilities(data){

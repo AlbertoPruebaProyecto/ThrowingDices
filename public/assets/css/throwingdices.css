@@ -48,6 +48,15 @@
 	display: inline-block;
 }
 
+.icon-money-character {
+	width: 30px;
+	height: 25px;
+	margin-bottom: 2px;
+	border: 0px solid #ccc;
+	vertical-align: center;
+	display: inline-block;
+}
+
 .name-user{
 	margin-top: 12px;
 }
@@ -79,7 +88,7 @@ div.scroll-card{
 }
 
 div.scroll-chat{
-	height: 380px;
+	height: 490px;
 	overflow-y: scroll;
 }
 
