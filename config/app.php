@@ -46,6 +46,7 @@ return [
     'url_image_party' => '/assets/images/image_party',
     'url_image_race' => '/assets/images/image_races',
     'url_image_class' => '/assets/images/image_classes',
+    'url_img_memes'  => '/assets/images/memes',
 
     /*
     |--------------------------------------------------------------------------
