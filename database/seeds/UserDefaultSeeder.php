@@ -12,10 +12,10 @@ class UserDefaultSeeder extends Seeder
     public function run()
     {
     	DB::table('users')->insert([
-    		'name' 		=> 'asdf',
-    		'email' 	=> 'asdf@asdf.com',
-    		'password' 	=> bcrypt('asdf'),
-    		'image' 	=> 'asdf.jpeg',
+    		'name' 		=> 'admin',
+    		'email' 	=> 'admin@admin.com',
+    		'password' 	=> bcrypt('admin'),
+    		'image' 	=> 'admin.jpeg',
     		'is_admin' 	=> true
     	]);
     }

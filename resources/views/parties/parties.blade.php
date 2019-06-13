@@ -1,5 +1,6 @@
 <?php
 Use App\Party;
+$exists = false;
 ?>
 
 @extends('baseLayout')
@@ -75,7 +76,7 @@ Use App\Party;
 
 	@foreach (Party::orderby('updated_at', 'desc')->get() as $party)
 	@if ($party->isJoin(Auth::id()))
-
+	<?php $exists = true; ?>
 	<div class="col-lg-3 col-md-4 col-sm-6">
 		<a href="show-party-character/{{ $party->id }}" class="m-r-xs theme-color">
 			<div class="thumbnail white">
@@ -95,6 +96,13 @@ Use App\Party;
 	</div>
 	@endif
 	@endforeach
+	@if (!$exists)
+	<div class="col-sm-12">
+		<div class="no-glutter p-lg">
+			<h4 class="widget-title"><i>No dispones de ninguna partida donde seas jugador</i></h4>
+		</div>
+	</div>
+	@endif
 </div>
 
 @stop
