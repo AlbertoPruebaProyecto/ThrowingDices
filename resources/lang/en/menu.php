@@ -16,6 +16,17 @@ return [
 	'semielf'	=>	'Semielfs',
 	'orc'		=>	'Semiorcs',
 
+	'classes'	=>	'Classes',
+	'barbarian'	=>	'Barbarian',
+	'bard'		=>	'Bard',
+	'paladin'	=>	'Paladin',
+
+	'spells'	=>	'Spells',
+
+	'objects'	=>	'Objects',
+	'weapon'	=>	'Weapon',
+	'armor'		=>	'Armor',
+
 	'lang'		=> 	'Language',
 	'es'		=> 	'Spanish',
 	'en'		=>	'English',

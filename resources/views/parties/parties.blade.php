@@ -59,8 +59,8 @@ Use App\Party;
 	</div>
 	@empty
 	<div class="col-sm-12">
-		<div class="widget no-glutter p-lg">
-			<h3 class="widget-title fz-lg m-b-lg"> No dispones de ninguna partida donde seas el master </h3>
+		<div class="no-glutter p-lg">
+			<h4 class="widget-title"><i>No dispones de ninguna partida donde seas el master</i></h4>
 		</div>
 	</div>
 	@endforelse
